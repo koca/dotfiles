@@ -1,0 +1,66 @@
+# Use `hub` as our git wrapper (https://hub.github.com/)
+hub_path=$(which hub)
+if (( $+commands[hub] ))
+then
+  alias git=$hub_path
+fi
+
+# Remove `+` and `-` from start of diff lines; just rely upon color.
+#alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
+alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
+alias gdd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r | grep -v yarn.lock'
+
+# Basics
+alias gl='git log --stat --color'
+alias gs='git status -sb'
+alias ga='git add -A'
+alias gcm='git commit -m'
+alias gacm='git add -A && git commit -m'
+alias gpush='git push'
+alias gpull='git pull'
+alias gcane='git commit --amend --no-edit'
+alias gpush="git push"
+alias fpush="git push -f origin HEAD"
+
+# Start over
+alias nah="git reset --hard; git clean -df;"
+
+# Clean local branches
+alias gbcl='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
+
+# Clean merged branches
+# https://medium.com/opendoor-labs/cleaning-up-branches-with-githubs-squash-merge-43138cc7585e
+alias gbcm='git checkout master && comm -12 <(git branch | sed "s/ *//g") <(git remote prune origin | sed "s/^.*origin\///g") | xargs -L1 -J % git branch -D %'
+
+# Checkout master
+alias m="git checkout master"
+
+# Check out a new branch and reset the current branch back one commit
+# Useful when you committed to master branch but you wanted to commit to another branch
+# Usage: $ branchify feat/new-feature
+function branchify {
+  git branch $1 && git reset --hard HEAD~ && git checkout $1
+}
+
+# Interactive Branches
+alias branches="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
+b () {
+  hub checkout $(branches | pick)
+}
+
+# TODO:
+#alias gpr='git pull-request -m'
+function gpr {
+  hub push origin HEAD
+  local msg="$*"
+  hub pull-request -o
+}
+
+function fpr {
+  hub push origin HEAD
+  local msg="$*"
+  hub pull-request -m "$msg" -o
+  echo "Creating PR: $msg"
+}
+
+

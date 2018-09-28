@@ -1,0 +1,6 @@
+# Toggle Dark Mode 
+alias dd="dark-mode"
+
+# Remove folders recursively
+alias rmallnodemodules="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+alias rmalldist="find . -name 'dist' -type d -prune -exec rm -rf '{}' +"
