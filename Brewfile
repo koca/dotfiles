@@ -51,6 +51,7 @@ brew 'screen'
 
 # Editors and git management
 cask 'github'
+cask 'fork'
 cask 'visual-studio-code'
 cask 'hyper'
 cask 'iterm2'

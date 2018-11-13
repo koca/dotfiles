@@ -5,6 +5,11 @@ then
   alias git=$hub_path
 fi
 
+function open_fork() {
+  (nohup open -a /Applications/Fork.app/Contents/MacOS/Fork ${1:-"."} &> /dev/null & disown)
+}
+alias fork=open_fork
+
 # Remove `+` and `-` from start of diff lines; just rely upon color.
 #alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
