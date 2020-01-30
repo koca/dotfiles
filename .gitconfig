@@ -3,6 +3,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[user]
-	name = Mesut Koca
-	email = imesutkoca@gmail.com
+
+[includeIf "gitdir:~/kod/onedio/"]
+  path = ~/.me/me-work
+[includeIf "gitdir:~/kod/junk/"]
+  path = ~/.me/me-personal
+
