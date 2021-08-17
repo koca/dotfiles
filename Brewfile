@@ -63,6 +63,7 @@ cask 'font-hack'
 
 # Browsers and drives
 cask 'google-chrome'
+# google drive:
 cask 'google-backup-and-sync'
 cask 'firefox'
 
@@ -72,21 +73,23 @@ cask 'caffeine'
 cask 'spectacle'
 cask 'hyperswitch'
 cask 'the-unarchiver'
+cask 'karabiner-elements'
 
 # Others
-cask 'franz'
 cask 'boostnote'
 cask 'numi'
 cask 'kap'
 cask 'iina'
-cask 'pophub'
+cask 'vlc'
 cask 'sip'
+cask 'pick'
+cask 'monitorcontrol'
+
+cask 'docker'
+cask 'spotify'
+cask 'discord'
+cask 'pennywise'
 
 # DB Tools
 # cask 'sequel-pro'
-
-# TODO
-# cask 'docker'
-# cask 'spotify'
-# cask 'vlc'
 # cask 'skype'
