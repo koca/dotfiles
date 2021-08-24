@@ -22,6 +22,7 @@ brew 'ack' # Better Search
 brew 'dark-mode' #Toggle Dark Mode from CLI
 brew 'git'
 brew 'git-lfs'
+brew 'hub'
 brew 'tree'
 brew 'wget'
 
@@ -31,7 +32,8 @@ brew 'node'
 brew 'nvm'
 brew 'yarn'
 
-brew 'hub'
+# karabiner elements https://github.com/yqrashawn/GokuRakuJoudo
+brew 'yqrashawn/goku/goku'
 
 # ------------------------------------------------------------------------------
 # Applications from brew cask
@@ -76,6 +78,7 @@ cask 'the-unarchiver'
 cask 'karabiner-elements'
 
 # Others
+cask 'notion'
 cask 'boostnote'
 cask 'numi'
 cask 'kap'
