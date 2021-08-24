@@ -105,8 +105,10 @@ antigen apply
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='/usr/local/bin/hub --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias df='dotfiles'
+
+export GOKU_EDN_CONFIG_FILE="$HOME/karabiner.edn"
 
 for file in $HOME/.aliases/* ; do
   source "$file"

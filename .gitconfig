@@ -8,8 +8,28 @@
   name = Mesut Koca
   email = imesutkoca@gmail.com
 
-[includeIf "gitdir:~/kod/onedio/"]
+[includeIf "gitdir:~/kod/work/"]
   path = ~/.me/me-work
 [includeIf "gitdir:~/kod/"]
   path = ~/.me/me-personal
+[includeIf "gitdir:~/.dotfiles"]
+  path = ~/.me/me-personal
 
+[core]
+	excludesfile = /Users/mesut/.gitignore
+
+[alias]
+    ru = "!f() { \
+        REMOTES=$(git remote); \
+        REMOTE=\"origin\"; \
+        case \"$REMOTES\" in \
+            *upstream*) \
+                REMOTE=\"upstream\"; \
+                ;; \
+           esac; \
+        git fetch $REMOTE; \
+        git update-ref refs/heads/master refs/remotes/$REMOTE/master; \
+        git checkout master >/dev/null 2>&1; \
+        git reset --hard $REMOTE/master >/dev/null 2>&1; \
+        git checkout - >/dev/null 2>&1; \
+    };"

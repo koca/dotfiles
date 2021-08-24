@@ -22,6 +22,7 @@ brew 'ack' # Better Search
 brew 'dark-mode' #Toggle Dark Mode from CLI
 brew 'git'
 brew 'git-lfs'
+brew 'hub'
 brew 'tree'
 brew 'wget'
 
@@ -31,7 +32,8 @@ brew 'node'
 brew 'nvm'
 brew 'yarn'
 
-brew 'hub'
+# karabiner elements https://github.com/yqrashawn/GokuRakuJoudo
+brew 'yqrashawn/goku/goku'
 
 # ------------------------------------------------------------------------------
 # Applications from brew cask
@@ -63,6 +65,7 @@ cask 'font-hack'
 
 # Browsers and drives
 cask 'google-chrome'
+# google drive:
 cask 'google-backup-and-sync'
 cask 'firefox'
 
@@ -72,21 +75,24 @@ cask 'caffeine'
 cask 'spectacle'
 cask 'hyperswitch'
 cask 'the-unarchiver'
+cask 'karabiner-elements'
 
 # Others
-cask 'franz'
+cask 'notion'
 cask 'boostnote'
 cask 'numi'
 cask 'kap'
 cask 'iina'
-cask 'pophub'
+cask 'vlc'
 cask 'sip'
+cask 'pick'
+cask 'monitorcontrol'
+
+cask 'docker'
+cask 'spotify'
+cask 'discord'
+cask 'pennywise'
 
 # DB Tools
 # cask 'sequel-pro'
-
-# TODO
-# cask 'docker'
-# cask 'spotify'
-# cask 'vlc'
 # cask 'skype'
