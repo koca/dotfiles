@@ -471,7 +471,7 @@
         {:des "open"
          :rules [:open-mode
                  [:-c [:code-project "~/.config"]]
-                 [:-k [:code-project "~/.config/karabiner/karabiner.edn"]]
+                 [:-k [:code-project "~/karabiner.edn"]]
                  [:-b [:code-project "~/.bin"]]
                  [:-z  [:code-project "~/.zfunc"]]
                  [:-r  [:code-project "~/.zshrc"]]
@@ -493,10 +493,10 @@
                  [:-a [:a :w :a :i :t :spacebar]]  ;await
                  [:-n [:c :l :a :s :s :!Sn :a :m :e :equal_sign :!Squote :!Squote :left_arrow]] ;className=""
                 ;;  [:-l [:open_bracket :a :l :t :close_bracket :open_paren :close_paren :left_arrow :left_arrow]] ;[]()
-                 [:-e [:type "johnlindquist@egghead.io"]]
-                 [:-g [:type "johnlindquist@gmail.com"]]
-                 [:-x [:type "johnlindquist+spam@gmail.com"]]
-                 [:-j [:type "johnlindquist"]]
+                 [:-e [:type "i@mesutkoca.com"]]
+                 [:-g [:type "imesutkoca@gmail.com"]]
+                 [:-x [:type "imesutkoca+spam@gmail.com"]]
+                 [:-j [:type "imesutkoca"]]
                  [:1 [:type-secret "OTHER_PASSWORD"]]
                  [:2 [:type-secret "MAC_PASSWORD"]]]}
 
