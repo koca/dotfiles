@@ -68,7 +68,7 @@ antigen use oh-my-zsh
 
 # install zsh plugins
 antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
+# antigen bundle sindresorhus/pure
 
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -120,3 +120,7 @@ export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# ~/.zshrc
+
+eval "$(starship init zsh)"

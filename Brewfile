@@ -1,9 +1,9 @@
 # Taps
-tap 'caskroom/cask'
-tap 'caskroom/versions'
+tap 'homebrew/cask'
+tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 tap 'homebrew/services'
-tap 'caskroom/fonts'
+tap 'homebrew/cask-fonts'
 
 # ------------------------------------------------------------------------------
 # Command line interface from brew
@@ -11,6 +11,7 @@ tap 'caskroom/fonts'
 
 # Install ZSH
 brew 'zsh'
+brew 'starship' # pure vs starship? lets see
 
 # Install more recent versions of some macOS tools
 brew 'grep'
@@ -64,6 +65,7 @@ cask 'insomnia'
 
 # Fonts
 cask 'font-fira-code'
+cask 'font-fira-code-nerd-font'
 cask 'font-hack'
 
 # Browsers and drives
