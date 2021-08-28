@@ -18,18 +18,41 @@
 [core]
 	excludesfile = /Users/mesut/.gitignore
 
+[init]
+	defaultBranch = main
+
+[pull]
+  rebase = true
+
+[branch]
+  autosetuprebase = always
+
+[push]
+  default = current
+
 [alias]
-    ru = "!f() { \
-        REMOTES=$(git remote); \
-        REMOTE=\"origin\"; \
-        case \"$REMOTES\" in \
-            *upstream*) \
-                REMOTE=\"upstream\"; \
-                ;; \
-           esac; \
-        git fetch $REMOTE; \
-        git update-ref refs/heads/master refs/remotes/$REMOTE/master; \
-        git checkout master >/dev/null 2>&1; \
-        git reset --hard $REMOTE/master >/dev/null 2>&1; \
-        git checkout - >/dev/null 2>&1; \
-    };"
+  rh = reset --hard HEAD
+  b = checkout -b
+  co = checkout
+  ca = commit -a --verbose
+  cp = cherry-pick
+  amend = commit -a --amend --no-edit
+  unstage = reset --soft HEAD
+  cdiff = "!git diff $1 $1^"
+  s = status
+  d = diff
+  cm = commit -m
+  ru = "!f() { \
+      REMOTES=$(git remote); \
+      REMOTE=\"origin\"; \
+      case \"$REMOTES\" in \
+          *upstream*) \
+              REMOTE=\"upstream\"; \
+              ;; \
+          esac; \
+      git fetch $REMOTE; \
+      git update-ref refs/heads/master refs/remotes/$REMOTE/master; \
+      git checkout master >/dev/null 2>&1; \
+      git reset --hard $REMOTE/master >/dev/null 2>&1; \
+      git checkout - >/dev/null 2>&1; \
+  };"
