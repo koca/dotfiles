@@ -35,6 +35,9 @@ brew 'yarn'
 # karabiner elements https://github.com/yqrashawn/GokuRakuJoudo
 brew 'yqrashawn/goku/goku'
 
+#
+brew 'pick'
+
 # ------------------------------------------------------------------------------
 # Applications from brew cask
 # ------------------------------------------------------------------------------
@@ -85,7 +88,6 @@ cask 'kap'
 cask 'iina'
 cask 'vlc'
 cask 'sip'
-cask 'pick'
 cask 'monitorcontrol'
 
 cask 'docker'
