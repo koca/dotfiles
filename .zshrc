@@ -105,6 +105,7 @@ antigen apply
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
 alias dotfiles='/usr/local/bin/hub --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias df='dotfiles'
 
@@ -121,6 +122,5 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-# ~/.zshrc
-
+# starship.rs
 eval "$(starship init zsh)"
