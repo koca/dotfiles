@@ -109,8 +109,6 @@ antigen apply
 alias dotfiles='/usr/local/bin/hub --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias df='dotfiles'
 
-export GOKU_EDN_CONFIG_FILE="$HOME/karabiner.edn"
-
 for file in $HOME/.aliases/* ; do
   source "$file"
 done
