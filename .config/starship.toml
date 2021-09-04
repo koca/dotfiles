@@ -76,10 +76,10 @@ disabled = false
 [git_status]
 conflicted = "  "
 style = "fg:#cccccc"
-ahead = "⇡"
-diverged = "⇕⇡"
-behind = "⇣"
-format = ' [$ahead_behind](fg:bright-cyan)'
+ahead = " ⇡"
+diverged = " ⇕⇡"
+behind = " ⇣"
+format = '[$ahead_behind](fg:bright-cyan)'
 disabled = false
 
 # show dirty git status. symbol = *
