@@ -471,7 +471,7 @@
         {:des "open"
          :rules [:open-mode
                  [:-c [:code-project "~/.config"]]
-                 [:-k [:code-project "~/karabiner.edn"]]
+                 [:-k [:code-project "~/.config/karabiner.edn"]]
                  [:-b [:code-project "~/.bin"]]
                  [:-z  [:code-project "~/.zfunc"]]
                  [:-r  [:code-project "~/.zshrc"]]
