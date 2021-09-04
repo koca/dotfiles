@@ -16,21 +16,29 @@
   path = ~/.me/me-personal
 
 [core]
-	excludesfile = /Users/mesut/.gitignore
+	excludesfile = ~/.gitignore
 
+# master to main
 [init]
 	defaultBranch = main
 
+# It is best practice to always rebase your local commits when you pull before pushing them.
+# git pull creates a merge commit we don't want that.
+# https://stackoverflow.com/questions/18930527/difference-between-git-pull-and-git-pull-rebase
 [pull]
   rebase = true
 
+# https://stackoverflow.com/questions/5480069/autosetuprebase-vs-autosetupmerge
 [branch]
   autosetuprebase = always
 
+# we don't have to do `git push origin HEAD` we can just do `git push`
 [push]
   default = current
 
+# i usually use these aliases for `dotfiles`. I have other aliases in `.aliases/git` file
 [alias]
+  a = add
   rh = reset --hard HEAD
   b = checkout -b
   co = checkout
