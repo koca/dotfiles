@@ -80,7 +80,7 @@ dotfiles config --local status.showUntrackedFiles no
 
 ### Manual Steps
 
-go to [Manual Steps](https://github.com/koca/dotfiles/issues/8)
+go to [Manual Steps](https://github.com/koca/dotfiles/discussions/10)
 
 ## Committing new changes
 
