@@ -78,6 +78,18 @@ home directory:
 dotfiles config --local status.showUntrackedFiles no
 ```
 
+### Managing Homebrew dependencies
+
+Once directory is under git management, run the bootstrap script to
+perform additional environment setup (tap Homebrew bundle, install Zsh, etc.):
+
+```sh
+script/bootstrap
+```
+
+To install new Homebrew packages, add to the `Brewfile`, run `brew bundle`,
+and commit your changes.
+
 ### Sensible macOS defaults
 
 When setting up a new Mac, you may want to set some sensible macOS defaults:
@@ -112,19 +124,6 @@ dotfiles push
 You'll want to avoid running an "add all" command (like `dotfiles add .` or `dotfiles add -A`)
 since only some of the files in the home directory are tracked by Git.
 
-## Miscellanea
-
-### Managing Homebrew dependencies
-
-Once directory is under git management, run the bootstrap script to
-perform additional environment setup (tap Homebrew bundle, install Zsh, etc.):
-
-```sh
-script/bootstrap
-```
-
-To install new Homebrew packages, add to the `Brewfile`, run `brew bundle`,
-and commit your changes.
 
 ## Starting from scratch
 
