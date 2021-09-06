@@ -83,7 +83,7 @@ dotfiles config --local status.showUntrackedFiles no
 When setting up a new Mac, you may want to set some sensible macOS defaults:
 
 ```bash
-./.macos
+source .macos
 ```
 
 ### Manual Steps
