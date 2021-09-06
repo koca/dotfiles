@@ -68,7 +68,7 @@ Be sure to back those up first before moving forward.
 
 Restart your shell session to pick up all the new aliases and configurations.
 
-### Finish setup
+## Finish setup
 
 You'll want to tell Git to ignore untracked files when running `git status`,
 since this repository will only manage certain hand-picked files in your
@@ -76,6 +76,14 @@ home directory:
 
 ```sh
 dotfiles config --local status.showUntrackedFiles no
+```
+
+### Sensible macOS defaults
+
+When setting up a new Mac, you may want to set some sensible macOS defaults:
+
+```bash
+./.macos
 ```
 
 ### Manual Steps
