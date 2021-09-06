@@ -78,6 +78,10 @@ home directory:
 dotfiles config --local status.showUntrackedFiles no
 ```
 
+### Manual Steps
+
+go to [Manual Steps](https://github.com/koca/dotfiles/issues/8)
+
 ## Committing new changes
 
 Suppose you just made a change to your `.zshrc` file and would like to commit it
