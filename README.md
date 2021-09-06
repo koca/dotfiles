@@ -18,6 +18,12 @@ brew install zsh zsh-completions
 chsh -s /bin/zsh
 ```
 
+#### Install oh-my-zsh
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
 ### Clone the repository into home directory
 
 This repository contains a `.zshrc` file, which you will want to override the
