@@ -156,6 +156,8 @@
 
        ;chromee
        :open_dev_tools {:key :c :modi :cs} ;:!COl
+       :open_tab_switcher {:key :a :modi :cs} ;:!COl
+       :open_bookmarks {:key :b :modi :cs} ;:!COl
        :chrome_full_screen {:key :f :modi :ct}
        :focus_omnibar {:key :l :modi :command}
 
@@ -615,10 +617,10 @@
 
         {:des "chrome"
          :rules [:chrome
-                 [:left_command :left_command nil {:alone [:!Ct]}]
-                 [:left_option :left_option nil {:alone ["~/.kit/bin/sk chrome-tab-switcher"]}]
+                ;;  [:left_command :left_command nil {:alone [:!Ct]}]
+                ;;  [:left_option :left_option nil {:alone ["~/.kit/bin/sk chrome-tab-switcher"]}]
                 ;;  [:left_option :left_option nil {:alone ["open simple://scripts/list-chrome-tabs"]}]
-                 [:right_option :focus_omnibar]
+                ;;  [:right_option :focus_omnibar]
                  [:right_control :left_option nil {:alone [:!CSt]}]
                  [{:key :right_option :modi :left_command} :!COi]
                 ;;  [:-d :open_dev_tools]
@@ -629,10 +631,13 @@
                 ;;  [:condi :chrome escape-mode]
 
                  [:condi :chrome :escape-mode]
+                 [:-c :open_dev_tools]
+                 [:-w :open_tab_switcher]
                  [:-f :chrome_full_screen]
-                 [:-d :open_dev_tools]
                  [:-a :!COleft_arrow]
-                 [:-t :!COright_arrow]
+                 [:-d :!COright_arrow]
+                 [:-o :focus_omnibar]
+                 [:-b :open_bookmarks]
                 ;;  [:grave_accent_and_tilde :a nil {:delayed {:invoked [:y] :canceled [:x]}}]
                  ;
                  ;
