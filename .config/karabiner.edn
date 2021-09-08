@@ -636,11 +636,11 @@
 
                  [:condi :chrome :escape-mode]
                  [:-c :open_dev_tools]
-                 [:-w :open_tab_switcher]
+                 [:-t :open_tab_switcher]
                  [:-f :chrome_full_screen]
                  [:-a :!COleft_arrow]
                  [:-d :!COright_arrow]
-                 [:-o :focus_omnibar]
+                 [:-s :focus_omnibar]
                  [:-b :open_bookmarks]
                 ;;  [:grave_accent_and_tilde :a nil {:delayed {:invoked [:y] :canceled [:x]}}]
                  ;
