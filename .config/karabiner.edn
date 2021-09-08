@@ -112,7 +112,7 @@
 
        :focus_git {:key :g :modi :ts} ;!TSg
        :focus_editor {:key :e :modi :control}
-       :focus_explorer {:key :e :modi :cos} ;:!CSOe
+       :focus_explorer {:key :e :modi :cs} ;:!CSOe
        :focus_terminal {:key :j :modi :command}
        :new_terminal {:key :grave_accent_and_tilde :modi :ts}; !TS`
 
@@ -247,8 +247,9 @@
                                              {:set ["snippet-mode" 0]}
                                              ]}
           :f23-mode {:key :f23 :alone  {:key :vk_none}}
-          :launch-mode {:key :f24 :alone {:key :spacebar :modi :left_option}}
-          :non-mode {:key :non_us_backslash :alone {:key :non_us_backslash}}
+        ;;   :launch-mode {:key :f24 :alone {:key :spacebar :modi :left_option}}
+          :launch-mode {:key :right_option}
+          :browser-mode {:key :slash}
           :num-mode {:key :keypad_num_lock :alone {:key :vk_none}}
           :shift-mode {:key :shift}
           :tilde-mode {:key :grave_accent_and_tilde :alone {:key :grave_accent_and_tilde}}
@@ -288,7 +289,7 @@
              :create-mode {:key :c}
              :modify-mode {:key :m}
 
-             :media-mode {:key :period}
+        ;;      :period-mode {:key :period}
              :slash-mode {:key :slash}
              ;end bottom row
 
@@ -372,15 +373,18 @@
                 ;;  [:##y :home]
 
                 ;;  [:##o :end]
-                 [:-j :acejump]
-                 [:-l :acejump_line]
-                 [:-m :acejump_multi]
-                 [:left_shift :acejump_selection]
+
 
                  [:##h :!Oleft_arrow]
                  [:##j :!Odown_arrow]
                  [:##k :!Oup_arrow]
                  [:##l :!Oright_arrow]
+
+                 [:spacebar :acejump]
+                 [:-o :acejump_line]
+                 [:-m :acejump_multi]
+                 [:left_shift :acejump_selection]
+
 
                  ;
                  ]}
@@ -430,7 +434,7 @@
                  [:semicolon :autocomplete]
 
                  [:return_or_enter :insert_line_below]
-                 [:left_shift :expand_selection]
+                 [:e :expand_selection]
                  ;
                  ]}
 
@@ -547,13 +551,13 @@
          :rules [:modify-mode
                  [:-t ["~/.kenv/bin/title-case"]]]}
 
-        {:des "media-mode"
-         :rules [:media-mode
-                 [:-s :rewind];
-                 [:-t :play_or_pause];
-                 [:-d :fastforward];
-                 ;
-                 ]}
+        ;; {:des "period-mode"
+        ;;  :rules [:period-mode
+        ;;          [:-s :rewind];
+        ;;          [:-t :play_or_pause];
+        ;;          [:-d :fastforward];
+        ;;          ;
+        ;;          ]}
 
         ;special keys
         {:des "testing thumb chords"
@@ -621,8 +625,8 @@
                 ;;  [:left_option :left_option nil {:alone ["~/.kit/bin/sk chrome-tab-switcher"]}]
                 ;;  [:left_option :left_option nil {:alone ["open simple://scripts/list-chrome-tabs"]}]
                 ;;  [:right_option :focus_omnibar]
-                 [:right_control :left_option nil {:alone [:!CSt]}]
-                 [{:key :right_option :modi :left_command} :!COi]
+                ;;  [:right_control :left_option nil {:alone [:!CSt]}]
+                ;;  [{:key :right_option :modi :left_command} :!COi]
                 ;;  [:-d :open_dev_tools]
 
                 ;;  [:condi :chrome ["multitouch_extension_finger_count_total" 1]]
@@ -801,21 +805,15 @@
          :rules
          [:launch-mode
           [:1 :open_1password]
-          [:-a [:launch "Ableton Live"]]
-          [:-b [:launch "Basecamp 3"]]
-          [:-c [:alfred "code" "com.vivaxy.workflow.open-in-vscode" " "]]
+          [:-b [:launch "Chrome"]] ;browser
+          [:-c [:launch "Code"]] ;code editor
           [:-d [:launch "Discord"]]
+          [:-t [:launch "Hyper"]] ;terminal
           [:-f [:launch "Finder"]];
-          [:-g [:alfred "github" "de.gh01.alfred.github" " "]]
+          [:-g [:launch "Fork"]];
           [:-i [:launch "iTerm"]]
           [:-k "launchctl kickstart -k org.pqrs.karabiner.karabiner_console_user_server"] ;restart karabiner
-          [:-m [:launch "YouTube Music"]]
-          [:-p [:launch "Pretzel"]]
-          [:-r [:launch "Restream Chat"]]
           [:-s [:launch "Slack"]]
-          [:-t [:launch "Chrome"]] ;
-          [:-v [:launch "VLC"]];
-          [:-z [:launch "Visual Studio Code"]];viZ
           [:comma [:launch "Messages"]];
                  ;
           ]}
@@ -899,21 +897,13 @@
                  ;
                  ]}
 
-        {:des "non-mode"
-         :rules [:non-mode
+        {:des "browser-mode"
+         :rules [:browser-mode
                  ;open urls
-                 [:-e [:open-chrome "egghead.io"]]
-                 [:-g [:open-chrome "mail.google.com"]]
-                 [:-j [:open-chrome "js.new"]];
-                 [:-k [:open-chrome "github.com/search?q=extension%3A.edn+filename%3Akarabiner.edn&type=Code&ref=advsearch&l=&l="]]
+                 [:-m [:open-chrome "mail.google.com"]]
+                 [:-g [:open-chrome "github.com"]]
                  [:-l [:open-chrome "localhost:3000"]]
-                 [:-m [:open-chrome "access.mymind.com/cards"]]
-                 [:-n [:open-chrome "news.google.com"]]
-                 [:-r [:open-chrome "roamresearch.com/#/app/egghead"]]
-                 [:-s [:open-chrome "github.com/johnlindquist/simplescripts"]]
                  [:-t [:open-chrome "twitter.com"]]
-                 [:-u [:open-chrome "egghead.io/lessons/new"]];Upload
-                 [:-x [:open-chrome "next.egghead.io"]]
                  [:-y [:open-chrome "youtube.com"]]
 ;
                  ]}
@@ -968,7 +958,7 @@
 
 
 
-;; rule [:period ["media-mode" 1] nil {:afterup ["media-mode" 0] :alone :period}]
+;; rule [:period ["period-mode" 1] nil {:afterup ["period-mode" 0] :alone :period}]
 ;;       |_____| |_______________| |_| |_________________________________________|
 ;;        <from>    <to>      <conditions>         <other options>
 
