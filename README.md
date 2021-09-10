@@ -14,7 +14,7 @@ and [robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 At the time of writing, Homebrew is a great way to install Zsh.
 
 ```sh
-brew install zsh zsh-completions
+brew install zsh
 chsh -s /bin/zsh
 ```
 
