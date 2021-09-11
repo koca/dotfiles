@@ -95,7 +95,7 @@
 
        ;shortcuts
        :autocomplete {:key :spacebar :modi :control} ;!Tspacebar
-       :command_palette {:key :t :modi :command}
+       :command_palette {:key :p :modi :cs}
 
        :cursor_find_match {:key :d :modi :command}
        :cursor_above {:key :up_arrow :modi :co}
@@ -110,11 +110,14 @@
 
        :find_in_project {:key :f :modi :cs} ;!CSf
 
+        ;code
        :focus_git {:key :g :modi :ts} ;!TSg
-       :focus_editor {:key :e :modi :control}
-       :focus_explorer {:key :e :modi :cs} ;:!CSOe
-       :focus_terminal {:key :j :modi :command}
+       :focus_editor {:key :c :modi :ts}
+       :focus_explorer {:key :e :modi :ts} ;:!CSOe
+       :focus_terminal {:key :t :modi :ts}
        :new_terminal {:key :grave_accent_and_tilde :modi :ts}; !TS`
+       :trigger_suggest {:key :spacebar :modi :control}
+       :trigger_autofix  {:key :period :modi :command}
 
        :open_next_editor {:key :right_arrow :modi :co}
        :open_prev_editor {:key :left_arrow :modi :co}
@@ -256,6 +259,7 @@
 
           ;testing left thumb + right thumb
           :f24-shift-mode {:key :left_shift :condi :launch-mode}
+          :left-option-mode {:key :left_option}
 
           ;
           }
@@ -479,14 +483,7 @@
                  [:-c [:code-project "~/.config"]]
                  [:-k [:code-project "~/.config/karabiner.edn"]]
                  [:-b [:code-project "~/.bin"]]
-                 [:-z  [:code-project "~/.zfunc"]]
-                 [:-r  [:code-project "~/.zshrc"]]
-                 [:-j  [:code-project "~/.js"]]
-                ;;  [:-a [:code-project "~/projects/automatoes.com"]]
-                ;;  [:-l [:code-project "~/projects/automatoes.com/_layouts"]]
-                 [:-e [:code-project "~/projects/egghead-io-nextjs"]]
-                 [:-r [:code-project "~/projects/egghead-rails"]]
-                 [:-t [:code-project "~/projects/thoughts"]]
+                 [:-z  [:code-project "~/.zshrc"]]
                  [:-s ["open simple://scripts/simple-switch"]] ; --disable-renderer-accessibility
                  [:-h ["open simple://scripts/say-hi \"yo\""]]
                  [:-p [:pad]]
@@ -495,8 +492,11 @@
 
         {:des "snippets"
          :rules [:snippet-mode
-                 [:-c [:c :o :n :s :o :l :e :period :l :o :g :open_paren :close_paren :left_arrow]]  ;console.log()
+                 [:-l [:c :o :n :s :o :l :e :period :l :o :g :open_paren :close_paren :left_arrow]]  ;console.log()
+                 [:-y [:a :s :y :n :c :spacebar]]  ;async
                  [:-a [:a :w :a :i :t :spacebar]]  ;await
+                 [:-c [:c :o :n :s :t :spacebar]];const
+                 [:-v [:l :e :t :spacebar]];let
                  [:-n [:c :l :a :s :s :!Sn :a :m :e :equal_sign :!Squote :!Squote :left_arrow]] ;className=""
                 ;;  [:-l [:open_bracket :a :l :t :close_bracket :open_paren :close_paren :left_arrow :left_arrow]] ;[]()
                  [:-e [:type "i@mesutkoca.com"]]
@@ -651,9 +651,10 @@
          :rules [:code
                  [:left_command :left_command nil {:alone :focus_editor}]
                  [:left_option :left_option nil {:alone :focus_terminal}]
+                 [:left_control :left_control nil {:alone :go_to_file}]
+                 [:left_shift :left_shift nil {:alone :command_palette}]
                  [:right_option :right_option nil {:alone :command_palette}]
-                 [:right_control :right_control nil {:alone :go_to_file}]
-                ;;  [:left_control :left_control nil {:alone :command_palette}]
+
 
                 ;; cmd save?
                 ;;  [:!Cs :replace];
@@ -676,6 +677,8 @@
                  [:-x :!!x]
                  [:-p :!!r] ;toggle panel
                  [:semicolon :!!semicolon]
+                 [:s :trigger_suggest]
+                 [:i :trigger_autofix]
 
 
                 ;;  [:left_shift :!Cb]
@@ -686,6 +689,9 @@
                  ;trackpad 2
                  [:condi :code ["multitouch_extension_finger_count_total" 2]]
                  [:-t [:button1 :f2]]
+
+                ;;  [:condi :code :left-option-mode]
+                ;;  [:-a :focus_git]
 
                  ;
                  ]}
@@ -852,6 +858,7 @@
                  [:quote [:equal_sign :!Squote :!Squote :left_arrow]];=""
 
                  ;macros
+
 
 
                  ;
