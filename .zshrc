@@ -111,10 +111,6 @@ antigen apply
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-# dotfiles
-alias dotfiles='/usr/local/bin/hub --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias df='dotfiles'
-
 # load aliases
 for file in $HOME/.aliases/* ; do
   source "$file"
