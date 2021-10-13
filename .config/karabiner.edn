@@ -115,6 +115,7 @@
        :focus_editor {:key :c :modi :ts}
        :focus_explorer {:key :e :modi :ts} ;:!CSOe
        :focus_terminal {:key :t :modi :ts}
+       :toggle_terminal {:key :grave_accent_and_tilde :modi :control} ; open/close terminal
        :new_terminal {:key :grave_accent_and_tilde :modi :ts}; !TS`
        :trigger_suggest {:key :spacebar :modi :control}
        :trigger_autofix  {:key :period :modi :command}
@@ -177,7 +178,13 @@
        :widen_grid {:key :2 :modi :command}
        :snap_to_grid {:key :4 :modi :command}
        :split_clip {:key :e :modi :command}
-       ;
+
+       ;raycast
+       :open-raycast {:key :p :modi :to}
+       :open-raycast-snippets {:key :s :modi :to}
+       :open-raycast-github-repositories {:key :g :modi :to}
+       :open-raycast-clipboard {:key :c :modi :to}
+
        }
 
  :templates {;
@@ -497,8 +504,10 @@
                  [:-a [:a :w :a :i :t :spacebar]]  ;await
                  [:-c [:c :o :n :s :t :spacebar]];const
                  [:-v [:l :e :t :spacebar]];let
+                 [:-f [:f :u :n :c :t :i :o :n :spacebar]];let
                  [:-n [:c :l :a :s :s :!Sn :a :m :e :equal_sign :!Squote :!Squote :left_arrow]] ;className=""
                 ;;  [:-l [:open_bracket :a :l :t :close_bracket :open_paren :close_paren :left_arrow :left_arrow]] ;[]()
+                 [:-h [:type "localhost:3000"]]
                  [:-e [:type "i@mesutkoca.com"]]
                  [:-g [:type "imesutkoca@gmail.com"]]
                  [:-x [:type "imesutkoca+spam@gmail.com"]]
@@ -636,7 +645,7 @@
 
                  [:condi :chrome :escape-mode]
                  [:-c :open_dev_tools]
-                 [:-t :open_tab_switcher]
+                 [:-w :open_tab_switcher]
                  [:-f :chrome_full_screen]
                  [:-a :!COleft_arrow]
                  [:-d :!COright_arrow]
@@ -669,7 +678,7 @@
                  [:-e :focus_explorer] ;; Explorer
                  [:-x :focus_explorer] ;; Exploer
                 ;;  [:-s :!!s] ;; Status Bar
-                 [:-t :focus_terminal]
+                 [:-d :toggle_terminal]
                  [:-n :new_terminal]
                  [:-f :find_in_project]
                  [:-z [:!Ck :z]] ;zen mode
@@ -818,6 +827,7 @@
           [:-f [:launch "Finder"]];
           [:-g [:launch "Fork"]];
           [:-i [:launch "iTerm"]]
+          [:-n [:launch "Notion"]]
           [:-k "launchctl kickstart -k org.pqrs.karabiner.karabiner_console_user_server"] ;restart karabiner
           [:-s [:launch "Slack"]]
           [:comma [:launch "Messages"]];
@@ -889,18 +899,12 @@
                  ;
                  ]}
 
-        {:des "numbers"
+        {:des "tab-mode"
          :rules [:tab-mode
-                 [:##a :1]
-                 [:##s :2]
-                 [:##d :3]
-                 [:##f :4];
-                 [:##g :5]
-                 [:##h :6]
-                 [:##j :7]
-                 [:##k :8]
-                 [:##l :9]
-                 [:##semicolon :0]
+                 [:k :open-raycast]
+                 [:s :open-raycast-snippets]
+                 [:p :open-raycast-github-repositories]
+                 [:c :open-raycast-clipboard]
                  ;
                  ]}
 

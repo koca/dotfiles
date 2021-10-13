@@ -8,12 +8,12 @@
   name = Mesut Koca
   email = imesutkoca@gmail.com
 
-[includeIf "gitdir:~/kod/work/"]
-  path = ~/.me/me-work
-[includeIf "gitdir:~/kod/"]
-  path = ~/.me/me-personal
 [includeIf "gitdir:~/.dotfiles"]
   path = ~/.me/me-personal
+[includeIf "gitdir:~/kod/"]
+  path = ~/.me/me-personal
+[includeIf "gitdir:~/kod/work/"]
+  path = ~/.me/me-work
 
 [core]
 	excludesfile = ~/.gitignore
