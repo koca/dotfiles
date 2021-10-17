@@ -57,6 +57,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 
+
 # check for antigen
 if [[ ! -f ~/.antigen.zsh ]]; then
   curl -L git.io/antigen > ~/.antigen.zsh
@@ -70,8 +71,12 @@ antigen use oh-my-zsh
 antigen bundle mafredri/zsh-async
 # antigen bundle sindresorhus/pure
 
+antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+
+# vim mode
+antigen bundle jeffreytse/zsh-vi-mode
 
 # tell antigen you're done
 antigen apply
@@ -106,18 +111,72 @@ antigen apply
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-alias dotfiles='/usr/local/bin/hub --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias df='dotfiles'
-
+# load aliases
 for file in $HOME/.aliases/* ; do
   source "$file"
 done
 
+
+# zstyle
+
+# Complete . and .. special directories
+zstyle ':completion:*' special-dirs true
+
+# zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+
+# disable named-directories autocompletion
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+
+# Use caching so that commands like apt and dpkg complete are useable
+zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' cache-path $ZSH_CACHE_DIR
+
+# Don't complete uninteresting users
+zstyle ':completion:*:*:*:users' ignored-patterns \
+        adm amanda apache at avahi avahi-autoipd beaglidx bin cacti canna \
+        clamav daemon dbus distcache dnsmasq dovecot fax ftp games gdm \
+        gkrellmd gopher hacluster haldaemon halt hsqldb ident junkbust kdm \
+        ldap lp mail mailman mailnull man messagebus  mldonkey mysql nagios \
+        named netdump news nfsnobody nobody nscd ntp nut nx obsrun openvpn \
+        operator pcap polkitd postfix postgres privoxy pulse pvm quagga radvd \
+        rpc rpcuser rpm rtkit scard shutdown squid sshd statd svn sync tftp \
+        usbmux uucp vcsa wwwrun xfs '_*'
+
+# ... unless we really want to.
+zstyle '*' single-ignored show
+
+if [[ $COMPLETION_WAITING_DOTS = true ]]; then
+  expand-or-complete-with-dots() {
+    print -Pn "%F{red}…%f"
+    zle expand-or-complete
+    zle redisplay
+  }
+  zle -N expand-or-complete-with-dots
+  # Set the function as the default tab completion widget
+  bindkey -M emacs "^I" expand-or-complete-with-dots
+  bindkey -M viins "^I" expand-or-complete-with-dots
+  bindkey -M vicmd "^I" expand-or-complete-with-dots
+fi
+
+# automatically load bash completion functions
+autoload -U +X bashcompinit && bashcompinit
+
+zstyle ':completion:*:approximate:*' max-errors 2
+zstyle ':completion:*:ssh:*' hosts off
+
+# end-zstyle
+
+
+
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$(brew --prefix nvm)/nvm.sh"
+# end-nvm
 
+# path
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # starship.rs

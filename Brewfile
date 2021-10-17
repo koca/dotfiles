@@ -55,13 +55,14 @@ brew 'grep'
 brew 'openssh'
 brew 'screen'
 
-# Editors and git management
+# Editors + git + code related stuff
 cask 'github'
 cask 'fork'
 cask 'visual-studio-code'
 cask 'hyper'
 cask 'iterm2'
 cask 'insomnia'
+cask 'postman'
 
 # Fonts
 cask 'font-fira-code'
@@ -81,6 +82,7 @@ cask 'spectacle'
 cask 'hyperswitch'
 cask 'the-unarchiver'
 cask 'karabiner-elements'
+cask 'raycast'
 
 # Others
 cask 'notion'
