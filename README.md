@@ -98,6 +98,12 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 source .macos
 ```
 
+Setup dock (optional)
+
+```bash
+source .dock
+```
+
 ### Manual Steps
 
 go to [Manual Steps](https://github.com/koca/dotfiles/discussions/10)
