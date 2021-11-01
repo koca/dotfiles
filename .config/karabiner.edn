@@ -93,9 +93,19 @@
        :return {:key :return_or_enter}
        :tilde {:key :grave_accent_and_tilde}
 
-       ;shortcuts
+
+
+       :delete_line {:key :k :modi :cs} ;!CSk
+
+       :find_in_project {:key :f :modi :cs} ;!CSf
+
+        ;vscode code
+        ;shortcuts
        :autocomplete {:key :spacebar :modi :control} ;!Tspacebar
-       :command_palette {:key :p :modi :cs}
+;;        :command_palette {:key :p :modi :cs}
+       :command_palette {:key :u :modi :cs}
+;;        :go_to_file {:key :p :modi :command}
+       :go_to_file {:key :j :modi :cs}
 
        :cursor_find_match {:key :d :modi :command}
        :cursor_above {:key :up_arrow :modi :co}
@@ -106,11 +116,6 @@
        :acejump_multi {:key :m :modi :cos}
 
 
-       :delete_line {:key :k :modi :cs} ;!CSk
-
-       :find_in_project {:key :f :modi :cs} ;!CSf
-
-        ;code
        :focus_git {:key :g :modi :ts} ;!TSg
        :focus_editor {:key :c :modi :ts}
        :focus_explorer {:key :e :modi :ts} ;:!CSOe
@@ -135,7 +140,6 @@
        :expand_selection {:key :right_arrow :modi :cst}
        :shrink_selection {:key :left_arrow :modi :cst}
 
-       :go_to_file {:key :p :modi :command}
        :insert_line_below {:key :return_or_enter :modi :command} ;!Creturn_or_enter
        :insert_line_above {:key :return_or_enter :modi :cs} ;!Creturn_or_enter
        :wrap_emmet {:key :p :modi :hyper}
