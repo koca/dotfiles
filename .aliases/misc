@@ -1,3 +1,7 @@
+# fzf
+alias fih="history | fzf +s --tac"
+
+
 # JS TS
 alias yw="yarn workspace"
 
