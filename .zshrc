@@ -5,6 +5,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH:~/.composer/vendor/bin
 export ZSH=$HOME/.oh-my-zsh
 export SHELL=zsh
 
+DISABLE_MAGIC_FUNCTIONS=true
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
