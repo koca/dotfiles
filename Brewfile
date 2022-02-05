@@ -99,6 +99,8 @@ cask 'spotify'
 cask 'discord'
 cask 'pennywise'
 
-# DB Tools
-# cask 'sequel-pro'
-# cask 'skype'
+# Terminal tools
+brew 'fzf'
+brew 'ripgrep'
+brew 'lsd'
+brew 'bat'
