@@ -183,7 +183,9 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # starship.rs
 eval "$(starship init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+# this is needed for fixing keybindings when using antigen vim plugin jeffreytse/zsh-vi-mode
+# https://github.com/jeffreytse/zsh-vi-mode/blob/master/README.md#execute-extra-commands
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 
 #GO
 export PATH=$PATH:/usr/local/go/bin
