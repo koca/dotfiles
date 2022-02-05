@@ -893,13 +893,13 @@
                 ;;  [:##l :!S9]
                 ;;  [:##semicolon :!S0]
                  [:-e :!S1]; ! exclaim
-                 [:-a :!S2]; @ at
+                 [:-q :!S2]; @ at
                  [:-h :!S3]; # hash
                  [:-d :!S4]; $ dollar
                  [:-p :!S5]; % percent
                  [:-c :!S6]; ^ caret
-                 [:-s :!S7]; & amperSand
-                 [:-b :!S8]; * bullet
+                 [:-a :!S7]; & amperSand
+                 [:-s :!S8]; * bullet
                  ;
                  ]}
 
