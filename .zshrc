@@ -182,3 +182,9 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # starship.rs
 eval "$(starship init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+#GO
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/GoProject
+export PATH=$PATH:$GOPATH/bin
