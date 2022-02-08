@@ -120,6 +120,7 @@
        :focus_editor {:key :c :modi :ts}
        :focus_explorer {:key :e :modi :ts} ;:!CSOe
        :focus_terminal {:key :t :modi :ts}
+       :toggle_problems {:key :p :modi :ts} ;:!CSOe
        :toggle_terminal {:key :grave_accent_and_tilde :modi :control} ; open/close terminal
        :new_terminal {:key :grave_accent_and_tilde :modi :ts}; !TS`
        :trigger_suggest {:key :spacebar :modi :control}
@@ -681,8 +682,10 @@
                  [:-g :focus_git] ;; SCM
                  [:-e :focus_explorer] ;; Explorer
                  [:-x :focus_explorer] ;; Exploer
+                 [:-p :toggle_problems]
                 ;;  [:-s :!!s] ;; Status Bar
-                 [:-d :toggle_terminal]
+                ;;  [:-d :toggle_terminal]
+                 [:-d :focus_terminal]
                  [:-n :new_terminal]
                  [:-f :find_in_project]
                  [:-z [:!Ck :z]] ;zen mode
