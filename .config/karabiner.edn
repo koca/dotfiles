@@ -1,11 +1,13 @@
+;; Resources:
+;; list of key codes and modifiers
+;; https://github.com/pqrs-org/Karabiner-Elements/issues/925#issuecomment-323984568
 {:default true
 
  :alone 500
  :delay 200
  :held 500
  :simlayer-threshold 200
- :modifiers {
-             :super-hyper [:command :shift :control :option :fn]
+ :modifiers {:super-hyper [:command :shift :control :option :fn]
              :hyper [:command :shift :control :option]
              :cos [:command :shift :option]
              :cst [:command :shift :control]
@@ -22,8 +24,7 @@
          :return {:key :return_or_enter}
          :tilde {:key :grave_accent_and_tilde}
 
-
-         ;qwerty froms
+;qwerty froms
          :-q {:key :q}
          :-w {:key :w}
          :-f {:key :f}
@@ -93,8 +94,6 @@
        :return {:key :return_or_enter}
        :tilde {:key :grave_accent_and_tilde}
 
-
-
        :delete_line {:key :k :modi :cs} ;!CSk
 
        :find_in_project {:key :f :modi :cs} ;!CSf
@@ -114,7 +113,6 @@
        :acejump_line {:key :l :modi :cos}
        :acejump_selection {:key :s :modi :cos}
        :acejump_multi {:key :m :modi :cos}
-
 
        :focus_git {:key :g :modi :ts} ;!TSg
        :focus_editor {:key :c :modi :ts}
@@ -188,9 +186,7 @@
        :open-raycast {:key :p :modi :to}
        :open-raycast-snippets {:key :s :modi :to}
        :open-raycast-github-repositories {:key :g :modi :to}
-       :open-raycast-clipboard {:key :c :modi :to}
-
-       }
+       :open-raycast-clipboard {:key :c :modi :to}}
 
  :templates {;
              :beep "osascript -e beep'"
@@ -230,9 +226,7 @@
                       tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"datamuse\" in workflow \"com.johnlindquist.datamuse\" with argument \"%s\"
                       '"
              ;
-
              }
-
  :applications {;
                 :ableton ["com.ableton.live"]
                 :chrome ["com.google.Chrome"]
@@ -247,9 +241,8 @@
 ; Layers Are Typically "Thumb Keys" or "Pinky Keys"
  :layers {;
           :caps_lock-mode {:key :caps_lock :alone
-                                                   {:key :escape}
+                           {:key :escape}}
 
-                           }
           :escape-mode {:key :escape :alone [{:key :escape}
                                              ;in case a mode gets stuck 😬
                                              {:set ["fn-mode" 0]}
@@ -259,8 +252,7 @@
                                              {:set ["cursor-mode" 0]}
                                              {:set ["delete-mode" 0]}
                                              {:set ["editor-mode" 0]}
-                                             {:set ["snippet-mode" 0]}
-                                             ]}
+                                             {:set ["snippet-mode" 0]}]}
           :f23-mode {:key :f23 :alone  {:key :vk_none}}
         ;;   :launch-mode {:key :f24 :alone {:key :spacebar :modi :left_option}}
           :launch-mode {:key :right_option}
@@ -309,17 +301,16 @@
              :slash-mode {:key :slash}
              ;end bottom row
 
-
-             ;begin special keys
+;begin special keys
              :tab-mode {:key :tab}
              :equals-mode {:key :equal_sign}
              :spacebar-mode {:key :spacebar}
              ;end special keys
 
+             :js-mode {:key :period :condi ["in-js" 1]}
+             :rust-mode {:key :period :condi ["in-rust" 1]}
 
-
-
- ;
+;
              }
  :devices {;; Note - I'm currently using a Kinesis Advantage keyboard for my defaults
            ;; and my macbook hasn't left my desk in a looooooong time...
@@ -327,6 +318,55 @@
            ;
            }
  :main [;
+
+        {:des "lkey (actions + language switches)"
+         :rules [:l-mode
+                 [:s [:equal_sign :!Speriod :spacebar]] ; -> =>
+                 ;; [:d [:km "Commit dotfiles"]]
+                 ;; [:f [:km "Commit home"]]
+                 ;[:f [:km "Commit learning"]]
+                 ;[:j [[:km "JS Dash profile"] ["in-python" 0] ["in-go" 0] ["in-js" 1] ["in-elixir" 0] ["in-rust" 0] ["in-swift" 0]]] ; JS
+                 [:t [["in-python" 0] ["in-go" 0] ["in-js" 1] ["in-elixir" 0] ["in-rust" 0] ["in-swift" 0]]] ; JS
+                 [:r [["in-python" 0] ["in-go" 0] ["in-js" 0] ["in-elixir" 0] ["in-rust" 1] ["in-swift" 0]]] ; Go
+                 ;[:j [[:open "dash://.jsts:"] ["in-python" 0] ["in-go" 0] ["in-js" 1] ["in-elixir" 0] ["in-rust" 0] ["in-swift" 0]]] ; JS
+                 ;;  [:l [[:open "dash://.python:"] ["in-python" 1] ["in-go" 0] ["in-js" 0] ["in-elixir" 0] ["in-rust" 0] ["in-swift" 0]]] ; Python
+                 [:spacebar :!COSn]]} ; Selection -> GitHub
+
+        {:des "jsdot (js/ts language mode)"
+         :rules [:js-mode
+                 [:tab [:km "w: MDN"]]
+                 [:a [:c :o :n :s :o :l :e :period :l :o :g :open_paren :close_paren :left_arrow]] ; -> console.log()
+                 ; => , => {} , => ({})
+                 [:q [:equal_sign :greater_than :spacebar]] ; -> =>
+                 [:w [:equal_sign :greater_than :spacebar :open_brace :close_brace :left_arrow :return_or_enter]] ; -> => {}
+                 [:e [:equal_sign :greater_than :spacebar :open_paren :open_brace :close_brace :close_paren :left_arrow :left_arrow]] ; -> => ({})
+                 [:t [:open_paren :open_brace :close_brace :close_paren :left_arrow :left_arrow]] ; -> => ({})
+                 ;; [:f [:!Cf :c :o :n :s :o :l :e :period :l :o :g :!S9 :return_or_enter]] ; -> search console.log( in file
+                 ; const, let, return, function
+                 [:r [:r :e :t :u :r :n :spacebar]] ; -> return
+                 [:c [:c :o :n :s :t :spacebar]]
+                 [:v [:l :e :t :spacebar]]
+                 [:f [:f :u :n :c :t :i :o :n :spacebar]]
+                ;[:x [:t :a :c :h :y :o :n :s :spacebar]] ; -> tachyons
+                ;[:c [:spacebar :s :t :y :l :e :equal_sign :!Sopen_bracket :!Sopen_bracket :!Sclose_bracket :!Sclose_bracket :left_arrow :left_arrow]] ; -> style={{}}
+                ;; [:c [:spacebar :c :l :a :s :s :!Sn :a :m :e :equal_sign :!Squote :!Squote :left_arrow]] ; -> className=""
+                ;; [:v [:j :a :v :a :s :c :r :i :p :t :spacebar]] ; -> javascript
+                ;; which mode am i?
+                 [:comma [:t :y :p :e :s :c :r :i :p :t :spacebar]] ; -> typescript
+                 ]
+                ;;
+         }
+
+        {:des "rustdot (rust language mode)"
+         :rules [:rust-mode
+                 [:tab [:km "w: MDN"]]
+                 [:a [:u :s :e :spacebar :s :t :d :period :i :o]] ; -> use std:io
+                 ;; which mode am i?
+                 [:comma [:t :y :p :e :s :c :r :i :p :t :spacebar]] ; -> typescript
+                 ]
+                ;;
+         }
+
         ;top row
 
         {:des "query"
@@ -377,7 +417,6 @@
          :rules [:fn-mode
                  [:##d :left_shift]
 
-
                  [:##h :!Fleft_arrow]
                  [:##j :!Fdown_arrow]
                  [:##k :!Fup_arrow]
@@ -390,7 +429,6 @@
 
                 ;;  [:##o :end]
 
-
                  [:##h :!Oleft_arrow]
                  [:##j :!Odown_arrow]
                  [:##k :!Oup_arrow]
@@ -401,8 +439,7 @@
                  [:-m :acejump_multi]
                  [:left_shift :acejump_selection]
 
-
-                 ;
+;
                  ]}
         {:des "shift-opt"
          :rules [:shift-opt-mode
@@ -434,8 +471,6 @@
                  [:quote :shrink_selection]
                  ;
                  ]}
-
-
         {:des "movement"
          :rules [:movement-mode
 
@@ -465,9 +500,6 @@
                  [:left_shift :acejump_selection]
                  ;
                  ]}
-
-
-
         {:des "delete"
          :rules [:delete-mode
                  [:hyphen :delete_line :code]
@@ -488,8 +520,6 @@
                  [:-t :open_next_editor]
                  ;
                  ]}
-
-
         {:des "open"
          :rules [:open-mode
                  [:-c [:code-project "~/.config"]]
@@ -579,9 +609,7 @@
                  [:a "say poop"]
                  ;
                  ]}
-
-
-        ;apps
+;apps
         {:des "ableton"
          :rules [[:condi :ableton ["multitouch_extension_finger_count_total" 0]]
                 ;
@@ -592,8 +620,7 @@
 
                  [:tilde :!COb]
 
-
-                 ; trackpad
+; trackpad
                  [:condi :ableton :multitouch_extension_finger_count_total]
                  [:left_option [:!Ce :!Cj]]
                  [:-b :add_midi_clip]
@@ -601,13 +628,11 @@
                  [:-w :!COl]
                  [:-d [:button1 :button1]]
 
-
                  [:t :!C4]
                  [:hyphen :!C1]
                  [:equal_sign :!C2]
 
                 ;;  [:g [:button1 :button1]]
-
 
                  [:e :!Stab]
                  [:r :!COp]
@@ -669,8 +694,7 @@
                  [:left_shift :left_shift nil {:alone :command_palette}]
                  [:right_option :right_option nil {:alone :command_palette}]
 
-
-                ;; cmd save?
+;; cmd save?
                 ;;  [:!Cs :replace];
 
                  [:condi :code :modify-mode]
@@ -696,7 +720,6 @@
                  [:s :trigger_suggest]
                  [:i :trigger_autofix]
 
-
                 ;;  [:left_shift :!Cb]
                  [:-a :toggle_sidebar]
 
@@ -711,8 +734,6 @@
 
                  ;
                  ]}
-
-
         {:des "final cut pro"
          :rules [:fcp
                  [{:pkey :button3}
@@ -720,9 +741,7 @@
 
                   {:afterup {:key :a}}]
                  [:condi :fcp :multitouch_extension_finger_count_total]
-                 [:delete_or_backspace [:button1 :delete_or_backspace]]
-
-                 ]}
+                 [:delete_or_backspace [:button1 :delete_or_backspace]]]}
 
         {:des "miro"
          :rules [[:condi :miro :multitouch_extension_finger_count_total]
@@ -734,9 +753,6 @@
                  [:c [:!Cc :button1 :!Cv]]
                  ;
                  ]}
-
-
-
         {:des "screenflow"
          :rules [:screenflow
                  ; mouse
@@ -767,7 +783,6 @@
          :rules [;
                  :multitouch_extension_finger_count_total
                  [:f :button1]
-
 
                  [:w :!Cw]
                  [:e :!Ct]
@@ -814,8 +829,6 @@
                  [:##f :return_or_enter]
                  ;
                  ]}
-
-
         {:des "caps_lock"
          :rules [:caps_lock-mode
                  [:##caps_lock :##escape]
@@ -840,14 +853,6 @@
           [:comma [:launch "Messages"]];
                  ;
           ]}
-
-
-
-
-
-
-
-
         {:des "spacebar"
          :rules [:spacebar-mode
                  ;symbols [](){}<>
@@ -876,12 +881,8 @@
 
                  ;macros
 
-
-
-                 ;
+;
                  ]}
-
-
         {:des "special characters"
          :rules [:tilde-mode
                  ;special characters: !@#$%^&*()
@@ -941,8 +942,7 @@
         ;;          ]
         ;;  }
 
-
-        ;; {:des "colemak"
+;; {:des "colemak"
         ;;  :rules [;
         ;;          [:##e :f]
         ;;          [:##r :p]
@@ -968,14 +968,8 @@
         ;;          ;
         ;;          ]}
 
-
-
-        ;
+;
         ]}
-
-
-
-
 ;; rule [:period ["period-mode" 1] nil {:afterup ["period-mode" 0] :alone :period}]
 ;;       |_____| |_______________| |_| |_________________________________________|
 ;;        <from>    <to>      <conditions>         <other options>
