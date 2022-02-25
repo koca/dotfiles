@@ -689,12 +689,15 @@
         {:des "code"
          :rules [:code
                  [:left_command :left_command nil {:alone :focus_editor}]
-                 [:left_option :left_option nil {:alone :focus_terminal}]
-                 [:left_control :left_control nil {:alone :go_to_file}]
+                 [:left_option :left_option nil {:alone :go_to_file}]
+                 [:left_control :left_control nil {:alone :focus_terminal}]
                  [:left_shift :left_shift nil {:alone :command_palette}]
                  [:right_option :right_option nil {:alone :command_palette}]
 
-;; cmd save?
+                ;; [:!Oe :focus_explorer] ;left_option
+                [:!Te :focus_explorer] ;left_control
+
+                ;; cmd save?
                 ;;  [:!Cs :replace];
 
                  [:condi :code :modify-mode]
