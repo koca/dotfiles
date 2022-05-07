@@ -2,20 +2,47 @@
 
 echo "Setting up your Mac..."
 
+#	ask for sudo access at start
+sudo -v
+
+#	Enable TouchID for sudo access
+# $HOME/script/enablesudotid.sh
+
+
 # ------------------------------------------------------------------------------
 #  Install Brew and its dependencies.
 # ------------------------------------------------------------------------------
 
 if test ! $(which brew); then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+eval "$(/usr/local/bin/brew shellenv)"
+
 brew update
+brew upgrade
+#	chmod needed for brew completion
+chmod -R go-w "$(brew --prefix)/share"
+
 brew tap homebrew/bundle
 brew bundle
 
 # ------------------------------------------------------------------------------
-#  Use zsh as default shell
+# ZSH Setup
 # ------------------------------------------------------------------------------
 
+# use zsh as default shell
 chsh -s $(which zsh)
+
+#	install oh my zsh
+sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+
+# ----------------------------
+# configs
+# ----------------------------
+
+cp .config/alt-tab/com.lwouis.alt-tab-macos.plist $HOME/Library/Preferences/com.lwouis.alt-tab-macos.plist
+# cp ./macos/JetBrainsMono.ttf $HOME/Library/Fonts
+
+
+osascript -e 'display alert "Setup completed" as informational'
