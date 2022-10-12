@@ -2,20 +2,12 @@
 alias g=lazygit
 
 # dotfiles
-alias dotfiles='/usr/local/bin/hub --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# this alias will add env variables to the terminal so we can run like:
+# > gitdotfiles git status
+# > gitdotfiles lazygit
+alias gitdotfiles="GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles/"
 alias df='lazygit -g .dotfiles -w $HOME'
-
-# Use `hub` as our git wrapper (https://hub.github.com/)
-hub_path=$(which hub)
-if (( $+commands[hub] ))
-then
-  alias git=$hub_path
-fi
-
-function open_fork() {
-  (nohup open -a /Applications/Fork.app/Contents/MacOS/Fork ${1:-"."} &> /dev/null & disown)
-}
-alias fork=open_fork
 
 # Remove `+` and `-` from start of diff lines; just rely upon color.
 #alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
@@ -60,21 +52,28 @@ b () {
   hub checkout $(branches | pick)
 }
 
-# TODO:
-#alias gpr='git pull-request -m'
+# Create a PR
+# usage:
+# > gpr
 function gpr {
-  hub push origin HEAD
+  git push origin HEAD
   local msg="$*"
-  hub pull-request -o
+  gh pr create -w
 }
 
+# Fast PR
+# usage:
+# > fpr "feat: add new feature"
 function fpr {
-  hub push origin HEAD
+  git push origin HEAD
   local msg="$*"
-  hub pull-request -m "$msg" -o
+  gh pr create -t "$msg" -w
   echo "Creating PR: $msg"
 }
 
+# Checkout using FZF
+# usage:
+# > fbr
 fbr() {
   local branches branch
   branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&

@@ -1,13 +1,17 @@
+;; Resources:
+;; list of key codes and modifiers
+;; https://github.com/pqrs-org/Karabiner-Elements/issues/925#issuecomment-323984568
 {:default true
 
  :alone 500
  :delay 200
  :held 500
  :simlayer-threshold 200
- :modifiers {
-             :super-hyper [:command :shift :control :option :fn]
+ :modifiers {:super-hyper [:command :shift :control :option :fn]
              :hyper [:command :shift :control :option]
+             :ccof [:command :control :option :fn]
              :cos [:command :shift :option]
+             :cco [:command :control :option]
              :cst [:command :shift :control]
              :co [:command :option]
              :cs [:command :shift]
@@ -22,8 +26,7 @@
          :return {:key :return_or_enter}
          :tilde {:key :grave_accent_and_tilde}
 
-
-         ;qwerty froms
+;qwerty froms
          :-q {:key :q}
          :-w {:key :w}
          :-f {:key :f}
@@ -93,28 +96,27 @@
        :return {:key :return_or_enter}
        :tilde {:key :grave_accent_and_tilde}
 
-       ;shortcuts
-       :autocomplete {:key :spacebar :modi :control} ;!Tspacebar
-       :command_palette {:key :p :modi :cs}
-
-       :cursor_find_match {:key :d :modi :command}
-       :cursor_above {:key :up_arrow :modi :co}
-       :cursor_below {:key :down_arrow :modi :co}
-       :acejump {:key :j :modi :cos}
-       :acejump_line {:key :l :modi :cos}
-       :acejump_selection {:key :s :modi :cos}
-       :acejump_multi {:key :m :modi :cos}
-
-
        :delete_line {:key :k :modi :cs} ;!CSk
 
        :find_in_project {:key :f :modi :cs} ;!CSf
 
-        ;code
+        ;vscode code
+        ;shortcuts
+       :autocomplete {:key :spacebar :modi :control} ;!Tspacebar
+;;        :command_palette {:key :p :modi :cs}
+       :command_palette {:key :u :modi :cs}
+;;        :go_to_file {:key :p :modi :command}
+       :go_to_file {:key :j :modi :cs}
+
+       :cursor_find_match {:key :d :modi :command}
+       :cursor_above {:key :up_arrow :modi :co}
+       :cursor_below {:key :down_arrow :modi :co}
+
        :focus_git {:key :g :modi :ts} ;!TSg
        :focus_editor {:key :c :modi :ts}
        :focus_explorer {:key :e :modi :ts} ;:!CSOe
        :focus_terminal {:key :t :modi :ts}
+       :toggle_problems {:key :p :modi :ts} ;:!CSOe
        :toggle_terminal {:key :grave_accent_and_tilde :modi :control} ; open/close terminal
        :new_terminal {:key :grave_accent_and_tilde :modi :ts}; !TS`
        :trigger_suggest {:key :spacebar :modi :control}
@@ -135,7 +137,6 @@
        :expand_selection {:key :right_arrow :modi :cst}
        :shrink_selection {:key :left_arrow :modi :cst}
 
-       :go_to_file {:key :p :modi :command}
        :insert_line_below {:key :return_or_enter :modi :command} ;!Creturn_or_enter
        :insert_line_above {:key :return_or_enter :modi :cs} ;!Creturn_or_enter
        :wrap_emmet {:key :p :modi :hyper}
@@ -183,11 +184,10 @@
        :open-raycast {:key :p :modi :to}
        :open-raycast-snippets {:key :s :modi :to}
        :open-raycast-github-repositories {:key :g :modi :to}
-       :open-raycast-clipboard {:key :c :modi :to}
-
-       }
+       :open-raycast-clipboard {:key :c :modi :to}}
 
  :templates {;
+             :bin "/usr/local/bin/%s"
              :beep "osascript -e beep'"
              :beep2 "osascript -e 'beep 2'"
              :new-note "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"new-note\" in workflow \"com.johnlindquist.new-note\" with argument \"\"'"
@@ -225,9 +225,7 @@
                       tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"datamuse\" in workflow \"com.johnlindquist.datamuse\" with argument \"%s\"
                       '"
              ;
-
              }
-
  :applications {;
                 :ableton ["com.ableton.live"]
                 :chrome ["com.google.Chrome"]
@@ -237,14 +235,14 @@
                 :screenflow ["net.telestream.screenflow9"]
                 :slack ["com.tinyspeck.slackmacgap"]
                 :webstorm ["com.jetbrains.Webstorm"]
+                :sigma ["com.sigmaos.sigmaos"]
+                :arc-app ["company.thebrowser.Browser"]
                 ;
                 }
 ; Layers Are Typically "Thumb Keys" or "Pinky Keys"
  :layers {;
-          :caps_lock-mode {:key :caps_lock :alone
-                                                   {:key :escape}
-
-                           }
+        ;;:caps_lock-mode {:key :caps_lock :alone {:key :escape}}
+          :capslock-mode {:key :caps_lock}
           :escape-mode {:key :escape :alone [{:key :escape}
                                              ;in case a mode gets stuck 😬
                                              {:set ["fn-mode" 0]}
@@ -254,8 +252,7 @@
                                              {:set ["cursor-mode" 0]}
                                              {:set ["delete-mode" 0]}
                                              {:set ["editor-mode" 0]}
-                                             {:set ["snippet-mode" 0]}
-                                             ]}
+                                             {:set ["snippet-mode" 0]}]}
           :f23-mode {:key :f23 :alone  {:key :vk_none}}
         ;;   :launch-mode {:key :f24 :alone {:key :spacebar :modi :left_option}}
           :launch-mode {:key :right_option}
@@ -267,6 +264,23 @@
           ;testing left thumb + right thumb
           :f24-shift-mode {:key :left_shift :condi :launch-mode}
           :left-option-mode {:key :left_option}
+
+          :tab-mode              {:key     :tab
+                                     :afterup [{:set ["yabai-move-app-mode" 0]}
+                                               {:set ["yabai-scale-mode" 0]}
+                                               {:set ["yabai-warp-mode" 0]}
+                                               {:set ["yabai-display-mode" 0]}
+                                               {:set ["yabai-layout-mode" 0]}
+                                               {:set ["spec-mode" 0]}]
+                                     :condi   [:!comma-mode :!period-mode]}
+
+          :yabai-workspace-mode   {:key :q :condi :tab-mode}
+          :yabai-window-mode   {:key :w :condi :tab-mode}
+          :yabai-warp-mode   {:key :e :condi :tab-mode}
+          :yabai-scale-mode  {:key :r :condi :tab-mode}
+          :yabai-display-mode  {:key :d :condi :tab-mode}
+          :yabai-move-app-mode  {:key :m :condi :tab-mode}
+          :yabai-layout-mode  {:key :z :condi :tab-mode}
 
           ;
           }
@@ -296,25 +310,22 @@
              ;end homerow
 
              ;begin bottom row
-             :emoji-mode {:key :z}
+             :z-key {:key :z}
              :create-mode {:key :c}
              :modify-mode {:key :m}
 
-        ;;      :period-mode {:key :period}
              :slash-mode {:key :slash}
              ;end bottom row
 
-
-             ;begin special keys
-             :tab-mode {:key :tab}
+;begin special keys
              :equals-mode {:key :equal_sign}
              :spacebar-mode {:key :spacebar}
              ;end special keys
 
+             :js-mode {:key :period :condi ["in-js" 1]}
+             :rust-mode {:key :period :condi ["in-rust" 1]}
 
-
-
- ;
+;
              }
  :devices {;; Note - I'm currently using a Kinesis Advantage keyboard for my defaults
            ;; and my macbook hasn't left my desk in a looooooong time...
@@ -322,6 +333,55 @@
            ;
            }
  :main [;
+
+        {:des "lkey (actions + language switches)"
+         :rules [:l-mode
+                 [:s [:equal_sign :!Speriod :spacebar]] ; -> =>
+                 ;; [:d [:km "Commit dotfiles"]]
+                 ;; [:f [:km "Commit home"]]
+                 ;[:f [:km "Commit learning"]]
+                 ;[:j [[:km "JS Dash profile"] ["in-python" 0] ["in-go" 0] ["in-js" 1] ["in-elixir" 0] ["in-rust" 0] ["in-swift" 0]]] ; JS
+                 [:t [["in-python" 0] ["in-go" 0] ["in-js" 1] ["in-elixir" 0] ["in-rust" 0] ["in-swift" 0]]] ; JS
+                 [:r [["in-python" 0] ["in-go" 0] ["in-js" 0] ["in-elixir" 0] ["in-rust" 1] ["in-swift" 0]]] ; Go
+                 ;[:j [[:open "dash://.jsts:"] ["in-python" 0] ["in-go" 0] ["in-js" 1] ["in-elixir" 0] ["in-rust" 0] ["in-swift" 0]]] ; JS
+                 ;;  [:l [[:open "dash://.python:"] ["in-python" 1] ["in-go" 0] ["in-js" 0] ["in-elixir" 0] ["in-rust" 0] ["in-swift" 0]]] ; Python
+                 [:spacebar :!COSn]]} ; Selection -> GitHub
+
+        {:des "jsdot (js/ts language mode)"
+         :rules [:js-mode
+                 [:tab [:km "w: MDN"]]
+                 [:a [:c :o :n :s :o :l :e :period :l :o :g :open_paren :close_paren :left_arrow]] ; -> console.log()
+                 ; => , => {} , => ({})
+                 [:q [:equal_sign :greater_than :spacebar]] ; -> =>
+                 [:w [:equal_sign :greater_than :spacebar :open_brace :close_brace :left_arrow :return_or_enter]] ; -> => {}
+                 [:e [:equal_sign :greater_than :spacebar :open_paren :open_brace :close_brace :close_paren :left_arrow :left_arrow]] ; -> => ({})
+                 [:t [:open_paren :open_brace :close_brace :close_paren :left_arrow :left_arrow]] ; -> => ({})
+                 ;; [:f [:!Cf :c :o :n :s :o :l :e :period :l :o :g :!S9 :return_or_enter]] ; -> search console.log( in file
+                 ; const, let, return, function
+                 [:r [:r :e :t :u :r :n :spacebar]] ; -> return
+                 [:c [:c :o :n :s :t :spacebar]]
+                 [:v [:l :e :t :spacebar]]
+                 [:f [:f :u :n :c :t :i :o :n :spacebar]]
+                ;[:x [:t :a :c :h :y :o :n :s :spacebar]] ; -> tachyons
+                ;[:c [:spacebar :s :t :y :l :e :equal_sign :!Sopen_bracket :!Sopen_bracket :!Sclose_bracket :!Sclose_bracket :left_arrow :left_arrow]] ; -> style={{}}
+                ;; [:c [:spacebar :c :l :a :s :s :!Sn :a :m :e :equal_sign :!Squote :!Squote :left_arrow]] ; -> className=""
+                ;; [:v [:j :a :v :a :s :c :r :i :p :t :spacebar]] ; -> javascript
+                ;; which mode am i?
+                 [:comma [:t :y :p :e :s :c :r :i :p :t :spacebar]] ; -> typescript
+                 ]
+                ;;
+         }
+
+        {:des "rustdot (rust language mode)"
+         :rules [:rust-mode
+                 [:tab [:km "w: MDN"]]
+                 [:a [:u :s :e :spacebar :s :t :d :period :i :o]] ; -> use std:io
+                 ;; which mode am i?
+                 [:comma [:t :y :p :e :s :c :r :i :p :t :spacebar]] ; -> typescript
+                 ]
+                ;;
+         }
+
         ;top row
 
         {:des "query"
@@ -372,7 +432,6 @@
          :rules [:fn-mode
                  [:##d :left_shift]
 
-
                  [:##h :!Fleft_arrow]
                  [:##j :!Fdown_arrow]
                  [:##k :!Fup_arrow]
@@ -385,7 +444,6 @@
 
                 ;;  [:##o :end]
 
-
                  [:##h :!Oleft_arrow]
                  [:##j :!Odown_arrow]
                  [:##k :!Oup_arrow]
@@ -396,8 +454,7 @@
                  [:-m :acejump_multi]
                  [:left_shift :acejump_selection]
 
-
-                 ;
+;
                  ]}
         {:des "shift-opt"
          :rules [:shift-opt-mode
@@ -429,8 +486,6 @@
                  [:quote :shrink_selection]
                  ;
                  ]}
-
-
         {:des "movement"
          :rules [:movement-mode
 
@@ -448,20 +503,6 @@
                  [:e :expand_selection]
                  ;
                  ]}
-
-        {:des "cursor"
-         :rules [:cursor-mode
-                 [:h :cursor_find_match]
-                 [:j :cursor_below]
-                 [:k :cursor_above]
-                 [:-j :acejump]
-                 [:-l :acejump_line]
-                 [:-m :acejump_multi]
-                 [:left_shift :acejump_selection]
-                 ;
-                 ]}
-
-
 
         {:des "delete"
          :rules [:delete-mode
@@ -483,14 +524,14 @@
                  [:-t :open_next_editor]
                  ;
                  ]}
-
-
         {:des "open"
          :rules [:open-mode
+                 [:-g ["/usr/local/bin/goku; say done;"]]
                  [:-c [:code-project "~/.config"]]
                  [:-k [:code-project "~/.config/karabiner.edn"]]
                  [:-b [:code-project "~/.bin"]]
-                 [:-z  [:code-project "~/.zshrc"]]
+                 [:-z [:code-project "~/.zshrc"]]
+                 [:-y [:code-project "~/.yabairc"]]
                  [:-s ["open simple://scripts/simple-switch"]] ; --disable-renderer-accessibility
                  [:-h ["open simple://scripts/say-hi \"yo\""]]
                  [:-p [:pad]]
@@ -549,13 +590,6 @@
                  ;
                  ]}
 
-        {:des "create"
-         :rules [:create-mode
-                 [:-n [:new-note]] ;h
-                 [:-t ["~/.kenv/bin/new-thought"]] ;a script that creates a new journal mdx file and open in code
-                 [:-b [:new-blog]] ;a script that creates a new blog md file and open in code
-                 ]}
-
         {:des "modify"
          :rules [:modify-mode
                  [:-t ["~/.kenv/bin/title-case"]]]}
@@ -574,9 +608,7 @@
                  [:a "say poop"]
                  ;
                  ]}
-
-
-        ;apps
+;apps
         {:des "ableton"
          :rules [[:condi :ableton ["multitouch_extension_finger_count_total" 0]]
                 ;
@@ -587,8 +619,7 @@
 
                  [:tilde :!COb]
 
-
-                 ; trackpad
+; trackpad
                  [:condi :ableton :multitouch_extension_finger_count_total]
                  [:left_option [:!Ce :!Cj]]
                  [:-b :add_midi_clip]
@@ -596,13 +627,11 @@
                  [:-w :!COl]
                  [:-d [:button1 :button1]]
 
-
                  [:t :!C4]
                  [:hyphen :!C1]
                  [:equal_sign :!C2]
 
                 ;;  [:g [:button1 :button1]]
-
 
                  [:e :!Stab]
                  [:r :!COp]
@@ -659,36 +688,31 @@
         {:des "code"
          :rules [:code
                  [:left_command :left_command nil {:alone :focus_editor}]
-                 [:left_option :left_option nil {:alone :focus_terminal}]
-                 [:left_control :left_control nil {:alone :go_to_file}]
+                 [:left_option :left_option nil {:alone :go_to_file}]
+                 [:left_control :left_control nil {:alone :focus_terminal}]
                  [:left_shift :left_shift nil {:alone :command_palette}]
                  [:right_option :right_option nil {:alone :command_palette}]
 
-
-                ;; cmd save?
-                ;;  [:!Cs :replace];
+                 [:!Te :focus_explorer] ;left_control
 
                  [:condi :code :modify-mode]
                  [:-r :rename]
-                 ;xxss
-                 ;view
+
+                 ;views
                  ;note - I try to keep these on my left hand so I can keep my right on the mouse
                  [:condi :code :escape-mode]
                  [:-g :focus_git] ;; SCM
                  [:-e :focus_explorer] ;; Explorer
                  [:-x :focus_explorer] ;; Exploer
-                ;;  [:-s :!!s] ;; Status Bar
-                 [:-d :toggle_terminal]
+                 [:-p :toggle_problems]
+                ;;  [:-d :toggle_terminal]
+                 [:-d :focus_terminal]
                  [:-n :new_terminal]
                  [:-f :find_in_project]
                  [:-z [:!Ck :z]] ;zen mode
-                 [:-v :!!v]
-                 [:-x :!!x]
-                 [:-p :!!r] ;toggle panel
                  [:semicolon :!!semicolon]
                  [:s :trigger_suggest]
                  [:i :trigger_autofix]
-
 
                 ;;  [:left_shift :!Cb]
                  [:-a :toggle_sidebar]
@@ -705,7 +729,24 @@
                  ;
                  ]}
 
-
+        {:des "sigma"
+         :rules [:sigma
+                 [:left_command :left_command nil {:alone :!Cleft_arrow}]
+                ;;  [:left_option :left_option nil {:alone :!Cright_arrow}]
+                 [:left_control :left_control nil {:alone :!Cright_arrow}]
+                ;;  [:left_shift :left_shift nil {:alone :slash}]
+                ;;  [:right_option :right_option nil {:alone :command_palette}]
+                 ;
+                 ]}
+        {:des "Arc"
+         :rules [:arc-app
+                 [:left_command :left_command nil {:alone :!COs}]
+                ;;  [:left_option :left_option nil {:alone :!Cright_arrow}]
+                ;;  [:left_control :left_control nil {:alone :!Cright_arrow}]
+                ;;  [:left_shift :left_shift nil {:alone :slash}]
+                ;;  [:right_option :right_option nil {:alone :command_palette}]
+                 ;
+                 ]}
         {:des "final cut pro"
          :rules [:fcp
                  [{:pkey :button3}
@@ -713,9 +754,7 @@
 
                   {:afterup {:key :a}}]
                  [:condi :fcp :multitouch_extension_finger_count_total]
-                 [:delete_or_backspace [:button1 :delete_or_backspace]]
-
-                 ]}
+                 [:delete_or_backspace [:button1 :delete_or_backspace]]]}
 
         {:des "miro"
          :rules [[:condi :miro :multitouch_extension_finger_count_total]
@@ -727,9 +766,6 @@
                  [:c [:!Cc :button1 :!Cv]]
                  ;
                  ]}
-
-
-
         {:des "screenflow"
          :rules [:screenflow
                  ; mouse
@@ -760,7 +796,6 @@
          :rules [;
                  :multitouch_extension_finger_count_total
                  [:f :button1]
-
 
                  [:w :!Cw]
                  [:e :!Ct]
@@ -808,39 +843,151 @@
                  ;
                  ]}
 
+        {:des "z-key"
+         :rules [:z-key
+                ;;
+                ;; []
+        ]}
+        {:des "yabai"
+         :rules [
+                ;; window mode (wkey)
+                ;; :yabai-window-mode   {:key :w :condi :tab-mode}
 
-        {:des "caps_lock"
-         :rules [:caps_lock-mode
-                 [:##caps_lock :##escape]
-                 ; I don't use a caps_lock key on my keyboard
-                 ;
-                 ]}
+                ;; move apps (mkey)
+                ;; when i want to move app to another desktop
+                :yabai-move-app-mode
+                [:1 "/usr/local/bin/yabai -m window --space 1-web && /usr/local/bin/yabai -m space --focus 1-web"]
+                [:2 "/usr/local/bin/yabai -m window --space 2-code && /usr/local/bin/yabai -m space --focus 2-code"]
+                [:3 "/usr/local/bin/yabai -m window --space 3-dev && /usr/local/bin/yabai -m space --focus 3-dev"]
+                [:4 "/usr/local/bin/yabai -m window --space 4-comm && /usr/local/bin/yabai -m space --focus 4-comm"]
+                [:5 "/usr/local/bin/yabai -m window --space 5-notes && /usr/local/bin/yabai -m space --focus 5-notes"]
+                [:6 "/usr/local/bin/yabai -m window --space 6-misc && /usr/local/bin/yabai -m space --focus 6-misc"]
+                [:7 "/usr/local/bin/yabai -m window --space 7W && /usr/local/bin/yabai -m space --focus 7W"]
+                [:8 "/usr/local/bin/yabai -m window --space 8W && /usr/local/bin/yabai -m space --focus 8W"]
+                [:9 "/usr/local/bin/yabai -m window --space 9W && /usr/local/bin/yabai -m space --focus 9W"]
+                [:r "/usr/local/bin/yabai -m window --space prev"]
+
+                ; workspace (qkey)
+                ; when i want to move everything in a desktop to another monitor
+                :yabai-workspace-mode
+                [:x "/usr/local/bin/yabai -m space --destroy"]
+                [:h "/usr/local/bin/yabai -m space --display west || last=$(/usr/local/bin/yabai -m query --displays | /usr/local/bin/jq 'sort_by(.frame.x) | last.index') && /usr/local/bin/yabai -m space --display ${last}"]
+                [:l "/usr/local/bin/yabai -m space --display east || first=$(/usr/local/bin/yabai -m query --displays | /usr/local/bin/jq 'sort_by(.frame.x) | first.index') && /usr/local/bin/yabai -m space --display ${first}"]
+                [:n "/usr/local/bin/yabai -m space --create && index=\"$(/usr/local/bin/yabai -m query --spaces --display | /usr/local/bin/jq 'map(select(.\"native-fullscreen\" == 0))[-1].index')\" && /usr/local/bin/yabai -m space --focus \"${index}\""]
+
+                ;; warp apps (ekey)
+                ;; when i want to change the place of an app. Like moving an app inside of a desktop to left, up, right, or bottom etc.
+                :yabai-warp-mode
+                [:h "/usr/local/bin/yabai -m window --warp west"]
+                [:j "/usr/local/bin/yabai -m window --warp south"]
+                [:k "/usr/local/bin/yabai -m window --warp north"]
+                [:l "/usr/local/bin/yabai -m window --warp east"]
+                [:n "/usr/local/bin/yabai -m window --warp next"]
+                [:p "/usr/local/bin/yabai -m window --warp prev"]
+
+                ;; scale apps (rkey)
+                ;; when i want to resize apps
+                :yabai-scale-mode
+                [:h "~/.config/yabai/resize left"]
+                [:j "~/.config/yabai/resize down"]
+                [:k "~/.config/yabai/resize up"]
+                [:l "~/.config/yabai/resize right"]
+
+                ;; display mode (dkey)
+                ;; when i want to switch focus between monitors/displays.
+                :yabai-display-mode
+                [:h "/usr/local/bin/yabai -m display --focus west || yabai -m display --focus $(yabai -m query --displays | jq 'sort_by(.frame.x) | last.index')"]
+                [:l "/usr/local/bin/yabai -m display --focus east || yabai -m display --focus $(yabai -m query --displays | jq 'sort_by(.frame.x) | first.index')"]
+
+                ;; layout mode (zkey)
+                :yabai-layout-mode
+                ;; bsp desktop - equal sizes
+                [:h "/usr/local/bin/yabai -m space --layout bsp"]
+                ;; stack desktop - full size
+                [:s "/usr/local/bin/yabai -m space --layout stack"]
+                ;; float desktop - floating
+                [:f "/usr/local/bin/yabai -m space --layout float"]
+
+                ;; when i hold tab key
+                :tab-mode
+
+                ;; focus windows
+                [:h "/usr/local/bin/yabai -m window --focus west || /usr/local/bin/yabai -m window --focus $(/usr/local/bin/yabai -m query --windows --display west | /usr/local/bin/jq 'map(select(.visible == 1)) | sort_by(.frame.x, .frame.y) | last | .id')"]
+                [:j "/usr/local/bin/yabai -m window --focus south"]
+                [:k "/usr/local/bin/yabai -m window --focus north"]
+                [:l "/usr/local/bin/yabai -m window --focus east || /usr/local/bin/yabai -m window --focus $(/usr/local/bin/yabai -m query --windows --display east | /usr/local/bin/jq 'map(select(.visible == 1)) | sort_by(.frame.x, .frame.y) | first | .id')"]
+
+                ; toggle whether the focused window should be shown on all spaces
+                [:s "/usr/local/bin/yabai -m window --toggle stick"]
+                ;; full screen
+                [:f "/usr/local/bin/yabai -m window --toggle zoom-fullscreen"]
+                ;; [:f "/usr/local/bin/yabai -m window --toggle topmost; /usr/local/bin/yabai -m window --toggle zoom-fullscreen; /usr/local/bin/yabai -m window --toggle topmost"]
+                ;; toggle topmost
+                [:t "/usr/local/bin/yabai -m window --toggle topmost"]
+                ;; float screen
+                [:o "/usr/local/bin/yabai -m window --toggle float"]
+
+                ;; space
+                ;; [:n "/usr/local/bin/yabai -m space --focus next"]
+                ;; [:p "/usr/local/bin/yabai -m space --focus prev"]
+                [:1 "/usr/local/bin/yabai -m space --focus 1-web"] ;1
+                [:2 "/usr/local/bin/yabai -m space --focus 2-code"]
+                [:3 "/usr/local/bin/yabai -m space --focus 3-dev"]
+                [:4 "/usr/local/bin/yabai -m space --focus 4-comm"]
+                [:5 "/usr/local/bin/yabai -m space --focus 5-notes"]
+                [:6 "/usr/local/bin/yabai -m space --focus 6-misc"]
+                [:7 "/usr/local/bin/yabai -m space --focus 7W"]
+                [:8 "/usr/local/bin/yabai -m space --focus 8W"]
+                [:9 "/usr/local/bin/yabai -m space --focus 9W"]
+                ;; focus next space in a monitor/display
+                [:open_bracket "/usr/local/bin/yabai -m space --focus prev"]
+                ;; focus previous space in a monitor/display
+                [:close_bracket "/usr/local/bin/yabai -m space --focus next"]
+                ;; space evenly
+                [:b "/usr/local/bin/yabai -m space --balance"]
+
+                ;; misc
+                ;; toggle border
+                ;; [:b "/usr/local/bin/yabai -m window --toggle border"]
+                ;; zoom parent
+                [:0 "/usr/local/bin/yabai -m window --toggle zoom-parent"]
+                ;; kill and start
+                ;; [:!S "/usr/local/bin/brew services stop yabai"]
+                [:x "/usr/local/bin/brew services restart yabai && (sleep 8; ~/script/uber-refresh.sh)"]
+                ;; minimize all vscode apps
+                ;; idea: maybe get the active app name and minimize all of the apps that match the active app name
+                [:m "/usr/local/bin/yabai -m query --windows --space 2-code | /usr/local/bin/jq -c '.[] | select(.app == \"Code\") | .id' | xargs -n1 /usr/local/bin/yabai -m window --minimize"]
+		;; close a window like cmd + q
+                [:delete_or_backspace "/usr/local/bin/yabai -m window --close"]
+
+                ;; trying
+                ;; [:1 "index=`/usr/local/bin/yabai -m query --displays --display | /usr/local/bin/jq '.index'` && if (($index == 1)) then /usr/local/bin/yabai -m space --focus 6; /usr/local/bin/yabai -m space --focus 1; else /usr/local/bin/yabai -m space --focus 1; /usr/local/bin/yabai -m space --focus 6 fi"]
+                ;;
+                ]}
 
         {:des "launch"
          :rules
          [:launch-mode
           [:1 :open_1password]
+          [:-a [:launch "Arc"]]
           [:-b [:launch "Chrome"]] ;browser
           [:-c [:launch "Code"]] ;code editor
           [:-d [:launch "Discord"]]
-          [:-t [:launch "Hyper"]] ;terminal
+          [:-t [:launch "WezTerm"]] ;terminal
           [:-f [:launch "Finder"]];
           [:-g [:launch "Fork"]];
           [:-i [:launch "iTerm"]]
           [:-n [:launch "Notion"]]
+          [:-e [:launch "Microsoft Edge"]]
           [:-k "launchctl kickstart -k org.pqrs.karabiner.karabiner_console_user_server"] ;restart karabiner
-          [:-s [:launch "Slack"]]
+          [:-m [:launch "Slack"]]
+          [:-s [:launch "SigmaOS"]]
+          [:-l [:launch "Logseq"]]
+           ;; restart yabai
+          [:-x "launchctl kickstart -k \"gui/${UID}/homebrew.mxcl.yabai\""]
           [:comma [:launch "Messages"]];
                  ;
           ]}
-
-
-
-
-
-
-
-
         {:des "spacebar"
          :rules [:spacebar-mode
                  ;symbols [](){}<>
@@ -869,12 +1016,8 @@
 
                  ;macros
 
-
-
-                 ;
+;
                  ]}
-
-
         {:des "special characters"
          :rules [:tilde-mode
                  ;special characters: !@#$%^&*()
@@ -889,22 +1032,22 @@
                 ;;  [:##l :!S9]
                 ;;  [:##semicolon :!S0]
                  [:-e :!S1]; ! exclaim
-                 [:-a :!S2]; @ at
+                 [:-q :!S2]; @ at
                  [:-h :!S3]; # hash
                  [:-d :!S4]; $ dollar
                  [:-p :!S5]; % percent
                  [:-c :!S6]; ^ caret
-                 [:-s :!S7]; & amperSand
-                 [:-b :!S8]; * bullet
+                 [:-a :!S7]; & amperSand
+                 [:-s :!S8]; * bullet
                  ;
                  ]}
 
-        {:des "tab-mode"
-         :rules [:tab-mode
-                 [:k :open-raycast]
-                 [:s :open-raycast-snippets]
-                 [:p :open-raycast-github-repositories]
-                 [:c :open-raycast-clipboard]
+        {:des "capslock mode"
+         :rules [:capslock-mode
+                 [:-k :open-raycast]
+                 [:-s :open-raycast-snippets]
+                 [:-p :open-raycast-github-repositories]
+                 [:-c :open-raycast-clipboard]
                  ;
                  ]}
 
@@ -934,8 +1077,7 @@
         ;;          ]
         ;;  }
 
-
-        ;; {:des "colemak"
+;; {:des "colemak"
         ;;  :rules [;
         ;;          [:##e :f]
         ;;          [:##r :p]
@@ -961,14 +1103,8 @@
         ;;          ;
         ;;          ]}
 
-
-
-        ;
+;
         ]}
-
-
-
-
 ;; rule [:period ["period-mode" 1] nil {:afterup ["period-mode" 0] :alone :period}]
 ;;       |_____| |_______________| |_| |_________________________________________|
 ;;        <from>    <to>      <conditions>         <other options>

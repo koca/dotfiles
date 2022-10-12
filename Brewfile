@@ -78,8 +78,7 @@ cask 'firefox'
 # Utils
 cask 'avibrazil-rdm'
 cask 'caffeine'
-cask 'spectacle'
-cask 'hyperswitch'
+cask 'alt-tab'
 cask 'the-unarchiver'
 cask 'karabiner-elements'
 cask 'raycast'
@@ -99,6 +98,10 @@ cask 'spotify'
 cask 'discord'
 cask 'pennywise'
 
-# DB Tools
-# cask 'sequel-pro'
-# cask 'skype'
+# Terminal tools
+brew 'fzf'
+brew 'ripgrep'
+brew 'lsd'
+brew 'bat'
+brew 'lazygit'
+brew 'starship'

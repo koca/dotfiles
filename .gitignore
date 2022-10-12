@@ -2,3 +2,5 @@
 .dotfiles
 .history
 .yarn
+local_modules
+node_modules
