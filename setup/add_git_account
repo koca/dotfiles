@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Prompt for user email
+read -p "Enter your email (for SSH key): " user_email
+
+# Prompt for a configuration name
+read -p "Enter a name for this configuration (e.g., 'personal', 'work'): " config_name
+
+# Generate SSH key (RSA format, recommended by GitHub)
+ssh_key_filename="id_$config_name"
+ssh-keygen -t rsa -b 4096 -C "$user_email" -f ~/.ssh/$ssh_key_filename
+
+# Configuration paths
+config_path="$HOME/.me/me-$config_name"
+git_config_dir="$HOME/kod/$config_name"
+
+# Ensure the directories exist
+mkdir -p $HOME/.me
+
+# Update the global gitconfig for this configuration
+git_config=$HOME/.gitconfig
+
+cat >> $git_config << EOF
+
+[includeIf "gitdir:$git_config_dir/"]
+  path = $config_path
+EOF
+
+# Configuration Git settings
+cat > $config_path << EOF
+# vim: ft=gitconfig
+[user]
+  name = Your Name
+  email = $user_email
+[core]
+  sshCommand = "ssh -i ~/.ssh/$ssh_key_filename"
+EOF
+
+# Ask if a custom SSH host configuration is needed
+read -p "Do you need to add a custom host to your ~/.ssh/config? (y/n): " add_custom_host
+
+if [[ $add_custom_host == "y" ]]; then
+    # Prompt for custom host name
+    read -p "Enter your custom host name (e.g., github.com): " custom_host_name
+
+    # Update SSH Config for this configuration with custom host
+    ssh_config=$HOME/.ssh/config
+
+    cat >> $ssh_config << EOF
+
+# Configuration for $custom_host_name using $config_name
+Host $custom_host_name
+  IdentityFile ~/.ssh/$ssh_key_filename
+EOF
+
+    echo "Custom host $custom_host_name added to SSH configuration."
+fi
+
+# Add SSH key to the agent
+ssh-add ~/.ssh/$ssh_key_filename
+
+echo "$config_name SSH key and Git configurations are updated."
+
+echo "If you are using github, open https://github.com/settings/keys and add a new key. You can get the SSH Key using this command:"
+echo "pbcopy < ~/.ssh/$ssh_key_filename.pub"
+

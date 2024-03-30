@@ -1,0 +1,31 @@
+#!/bin/sh
+
+echo "Installing brew and git which is required for Rotz"
+
+# ask for sudo access at start
+sudo -v
+
+# ------------------------------------------------------------------------------
+#  Install Brew and its dependencies.
+# ------------------------------------------------------------------------------
+
+if test ! $(which brew); then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/mesut/.zprofile
+
+zsh
+
+brew update
+brew upgrade
+# chmod needed for brew completion
+chmod -R go-w "$(brew --prefix)/share"
+
+
+# ------------------------------------------------------------------------------
+#  Install Rotz github.com/volllly/rotz
+# ------------------------------------------------------------------------------
+brew install volllly/tap/rotz

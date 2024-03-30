@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Prompt for the configuration name
+read -p "Enter the configuration name (e.g., 'work2'): " name
+
+# Construct the key filenames, paths, and directory
+ssh_key="$HOME/.ssh/id_$name"
+ssh_key_pub="$HOME/.ssh/id_${name}.pub"
+config_dir="$HOME/.me/me-$name"
+git_config="$HOME/.gitconfig"
+ssh_config="$HOME/.ssh/config"
+
+# Backup files before making changes
+echo "Creating backups..."
+cp "$git_config" "${git_config}.backup"
+cp "$ssh_config" "${ssh_config}.backup"
+
+# Remove SSH key files
+echo "Removing SSH keys for $name..."
+rm -v "$ssh_key" "$ssh_key_pub"
+
+# Remove the configuration directory
+echo "Removing configuration directory for $name..."
+rm -rf "$config_dir"
+
+# Remove block from .ssh/config
+echo "Updating $ssh_config..."
+grep -n "id_$name" "$ssh_config" | cut -d: -f1 | while read -r line_number; do
+    sed -i.bak "$((line_number-2)),${line_number}d" "$ssh_config"
+done
+
+# Remove related block from .gitconfig
+echo "Updating $git_config..."
+git_config_pattern=".me/me-$name"
+grep -n "$git_config_pattern" "$git_config" | cut -d: -f1 | while read -r line_number; do
+    if [ ! -z "$line_number" ]; then
+        sed -i.bak "$((line_number-1)),${line_number}d" "$git_config"
+    fi
+done
+
+echo "Configuration for '$name' removed. Please review the backup and modified files."
