@@ -1,0 +1,11 @@
+windows:
+  installs:
+    cmd: scoop install extras/vscode
+    depends:
+      - scoop
+
+linux|darwin:
+  installs:
+    cmd: brew install --cask visual-studio-code
+    depends:
+      - brew

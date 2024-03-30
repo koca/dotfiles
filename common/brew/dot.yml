@@ -1,0 +1,8 @@
+windows:
+  installs: false
+
+linux|darwin:
+  installs:
+    cmd: brew bundle install --global
+  links:
+    Brewfile: ~/.Brewfile
