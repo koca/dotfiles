@@ -1,0 +1,6 @@
+
+darwin:
+  installs:
+    brew install --cask wezterm
+  links:
+    .wezterm.lua: ~/.config/wezterm/wezterm.lua
