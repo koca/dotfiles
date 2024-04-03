@@ -1,0 +1,3 @@
+darwin:
+  installs:
+    cmd: brew install --cask arc
