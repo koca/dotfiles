@@ -1,8 +1,10 @@
 windows:
   installs: false
+  # links:
+  # settings.json: %APPDATA%\Code\User\settings.json
 
-linux|darwin:
+darwin:
   installs:
     cmd: brew install --cask cursor
-    depends:
-      - brew
+  links:
+    settings.json: ~/Library/Application Support/Cursor/User/settings.json
