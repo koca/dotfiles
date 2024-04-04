@@ -1,0 +1,5 @@
+darwin:
+  installs:
+    cmd: brew install --cask alt-tab
+  links:
+    com.lwouis.alt-tab-macos.plist: ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
