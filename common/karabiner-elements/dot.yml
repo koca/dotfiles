@@ -1,0 +1,4 @@
+darwin:
+  installs:
+    brew install --cask karabiner-elements
+

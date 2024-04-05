@@ -1,0 +1,9 @@
+darwin:
+  depends:
+    - karabiner-elements
+  installs: |
+    brew tap houmain/tap
+    brew install --HEAD houmain/tap/keymapper
+  links:
+    keymapper.conf: ~/keymapper.conf
+
