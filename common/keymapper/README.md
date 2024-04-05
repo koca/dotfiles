@@ -1,5 +1,9 @@
 # Keymapper Notes
 
+## Resources
+
+- Get key code: https://www.toptal.com/developers/keycode
+
 ## MacOS
 
 ### Keymapperd Permissions issue
