@@ -1,3 +1,8 @@
 linux|darwin:
   installs:
     cmd: brew install --cask logseq
+  links:
+    config/config.edn: ~/.logseq/config/config.edn
+    config/plugins.edn: ~/.logseq/config/plugins.edn
+    preferences.json: ~/.logseq/preferences.json
+

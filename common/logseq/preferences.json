@@ -1,0 +1,23 @@
+{
+  "theme": {
+    "name": "miA Duo",
+    "url": "assets:///Users/mesut/.logseq/plugins/logseq-mia-theme/mia_duo.css",
+    "description": "A theme inspired by macOS and iA Writer, using the Duo font.",
+    "pid": "logseq-mia-theme"
+  },
+  "themes": {
+    "mode": "dark",
+    "light": null,
+    "dark": {
+      "name": "miA Sans",
+      "url": "assets:///Users/mesut/.logseq/plugins/logseq-mia-theme/mia_sans.css",
+      "description": "A theme inspired by macOS and iA Writer, using the IBM Plex Sans font.",
+      "pid": "logseq-mia-theme",
+      "group-first": false,
+      "group-desc": null,
+      "mode": "dark",
+      "selected": false
+    }
+  },
+  "externals": []
+}
