@@ -3,3 +3,5 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "volllly/tap"
 brew "gh"
+brew "defaultbrowser"
+
