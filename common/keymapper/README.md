@@ -7,6 +7,7 @@
 ## MacOS
 
 
+
 ###  Updated files
 
 #### ./keymapper-launchd file
@@ -38,6 +39,12 @@ sudo rm -rf /usr/local/bin/keymapperctl
 sudo rm -rf /usr/local/bin/keymapper-launchd
 ```
 
+## plist files
+
+```sh
+vim /Library/LaunchDaemons/keymapperd.plist
+vim /Library/LaunchAgents/keymapper.plist
+```
 
 ## Manual testing
 

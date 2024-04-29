@@ -7,8 +7,7 @@ darwin:
     cmake -B build
     cmake --build build
     sudo cmake --install build
-    sudo chmod +x /usr/local/bin/keymapper-launchd
-    sudo keymapper-launchd add
+    sudo chmod +x $KEYMAPPER_PATH/script.sh
 
   # this fails for some reason
   # installs: |
@@ -16,5 +15,5 @@ darwin:
     # brew install --HEAD houmain/tap/keymapper
 
   links:
-    keymapper.conf: ~/config/keymapper/keymapper.conf
+    keymapper.conf: ~/keymapper.conf
 
