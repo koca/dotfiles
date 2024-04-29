@@ -1,9 +1,20 @@
 darwin:
-  depends:
-    - karabiner-elements
   installs: |
-    brew tap houmain/tap
-    brew install --HEAD houmain/tap/keymapper
+    KEYMAPPER_PATH=~/kod/personal/dotfiles/common/keymapper
+    gh repo clone houmain/keymapper $KEYMAPPER_PATH/keymapper
+    cd $KEYMAPPER_PATH/keymapper
+    cp $KEYMAPPER_PATH/keymapper-launchd $KEYMAPPER_PATH/keymapper/extra/keymapper-launchd
+    cmake -B build
+    cmake --build build
+    sudo cmake --install build
+    sudo chmod +x /usr/local/bin/keymapper-launchd
+    sudo keymapper-launchd add
+
+  # this fails for some reason
+  # installs: |
+    # brew tap houmain/tap
+    # brew install --HEAD houmain/tap/keymapper
+
   links:
-    keymapper.conf: ~/keymapper.conf
+    keymapper.conf: ~/config/keymapper/keymapper.conf
 

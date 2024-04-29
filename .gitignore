@@ -1,3 +1,6 @@
+# dotfiles spesific
+/common/keymapper/keymapper/
+
 # OS generated files #
 ######################
 .DS_Store

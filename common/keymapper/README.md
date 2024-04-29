@@ -6,6 +6,41 @@
 
 ## MacOS
 
+
+###  Updated files
+
+#### ./keymapper-launchd file
+
+- added:
+
+```xml
+<key>UserName</key>
+<string>root</string>
+```
+
+
+#### ./keymapper.rb file
+
+from https://github.com/houmain/homebrew-tap
+
+
+### Manual Uninstall
+
+```bash
+sudo keymapper-launchd remove
+
+sudo rm -rf /Library/LaunchDaemons/keymapperd.plist
+sudo rm -rf /Library/LaunchAgents/keymapper.plist
+
+sudo rm -rf /usr/local/bin/keymapper
+sudo rm -rf /usr/local/bin/keymapperd
+sudo rm -rf /usr/local/bin/keymapperctl
+sudo rm -rf /usr/local/bin/keymapper-launchd
+```
+
+
+## Manual testing
+
 ### Keymapperd Permissions issue
 
 sometimes there is an issue on macos where keymapperd is not able to grab the virtual device.
