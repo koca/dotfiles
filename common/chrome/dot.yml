@@ -1,4 +1,5 @@
 darwin:
   installs: |
+    brew install defaultbrowser
     brew install --cask google-chrome
     osascript ~/kod/personal/dotfiles/common/chrome/set-default-browser.scpt chrome

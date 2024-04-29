@@ -2,6 +2,8 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "volllly/tap"
-brew "gh"
-brew "defaultbrowser"
 
+# github cli
+brew "gh"
+# JSON processor - https://github.com/jqlang/jq
+brew "jq"
