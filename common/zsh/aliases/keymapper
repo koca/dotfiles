@@ -1,0 +1,2 @@
+alias skey='sudo keymapperd -v & disown; sleep 2; keymapper -u -v & disown'
+alias kkey='sudo killall keymapperd; sudo killall keymapper; sudo killall -9 keymapperd; sudo killall -9 keymapper'

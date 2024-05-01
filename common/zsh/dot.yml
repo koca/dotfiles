@@ -1,0 +1,13 @@
+darwin:
+  depends:
+    - starship
+  installs:
+    brew install antidote
+  links:
+    .zshrc: ~/.zshrc
+    .zprofile: ~/.zprofile
+    .zsh_plugins.txt: ~/.zsh_plugins.txt
+    ./aliases: ~/.config/zsh/aliases/
+    ./private: ~/.config/zsh/private/
+    ./zsettings: ~/.config/zsh/zsettings
+

@@ -1,5 +1,6 @@
 # dotfiles spesific
 /common/keymapper/keymapper/
+/common/zsh/private/*
 
 # OS generated files #
 ######################

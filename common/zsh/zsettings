@@ -1,0 +1,2 @@
+# Fix oh-my-zsh copy paste issues
+DISABLE_MAGIC_FUNCTIONS=true
