@@ -1,0 +1,7 @@
+darwin:
+  installs:
+    brew tap ankitpokhrel/jira-cli
+    brew install jira-cli
+  links:
+    jira: ~/.config/zsh/aliases/jira
+
