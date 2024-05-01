@@ -3,7 +3,24 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "volllly/tap"
 
+# Install GNU core utilities (those that come with macOS are outdated)
+# Install some other useful utilities like `sponge`.
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+brew 'coreutils'
+brew 'findutils'
+brew 'moreutils'
+
+##### CLI TOOLS #####
+brew "fzf"
 # github cli
 brew "gh"
 # JSON processor - https://github.com/jqlang/jq
 brew "jq"
+# eza https://github.com/eza-community/eza
+brew "eza"
+# zoxide https://github.com/ajeetdsouza/zoxide
+brew "zoxide"
+
+brew "bitwarden-cli"
+
+brew "bat"
