@@ -100,7 +100,25 @@ ssh_only = true
 [jobs]
 symbol = ""
 
+# Configure the package version
+[package]
+symbol = " "
+style = "dimmed white"
+format = "via [🎁 $version](208 bold) "
+disabled = true
 
+# Configure the Rust module
+[rust]
+symbol = " "
+style = "dimmed red"
+disabled = true
+
+# Configure the Node.js module
+[nodejs]
+symbol = " "
+style = "dimmed green"
+format = '[$version]($style)'
+disabled = true
 
 [line_break]
 disabled = false
