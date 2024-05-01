@@ -1,0 +1,8 @@
+darwin:
+  installs: |
+    brew install git
+
+  links:
+    .gitconfig: ~/.gitconfig
+    .gitignore: ~/.gitignore
+

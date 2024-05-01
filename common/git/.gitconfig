@@ -1,0 +1,37 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[user]
+  name = Mesut Koca
+  email = imesutkoca@gmail.com
+
+[core]
+	excludesfile = ~/.gitignore
+
+# master to main
+[init]
+	defaultBranch = main
+
+# It is best practice to always rebase your local commits when you pull before pushing them.
+# git pull creates a merge commit we don't want that.
+# https://stackoverflow.com/questions/18930527/difference-between-git-pull-and-git-pull-rebase
+[pull]
+  rebase = true
+
+# https://stackoverflow.com/questions/5480069/autosetuprebase-vs-autosetupmerge
+[branch]
+  autosetuprebase = always
+
+# sets upstream automatically
+[push]
+  default = current
+
+
+[includeIf "gitdir:/Users/mesut/"]
+  path = /Users/mesut/.me/me-personal
+
+[includeIf "gitdir:/Users/mesut/kod/work/"]
+  path = /Users/mesut/.me/me-work
