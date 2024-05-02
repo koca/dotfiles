@@ -1,4 +1,4 @@
-
+ohmyzsh/ohmyzsh path:lib/directories.zsh
 ohmyzsh/ohmyzsh path:plugins/zoxide
 ohmyzsh/ohmyzsh path:plugins/eza
 ohmyzsh/ohmyzsh path:plugins/brew
@@ -6,7 +6,7 @@ ohmyzsh/ohmyzsh path:plugins/brew
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
-
 zsh-users/zsh-history-substring-search
+
 jeffreytse/zsh-vi-mode
 Aloxaf/fzf-tab
