@@ -11,16 +11,19 @@ brew 'findutils'
 brew 'moreutils'
 
 ##### CLI TOOLS #####
-brew "fzf"
+# Bitwarden
+brew "bitwarden-cli"
 # github cli
 brew "gh"
-# JSON processor - https://github.com/jqlang/jq
+# fzf https://github.com/junegunn/fzf
+brew "fzf"
+# JSON processor https://github.com/jqlang/jq
 brew "jq"
 # eza https://github.com/eza-community/eza
 brew "eza"
 # zoxide https://github.com/ajeetdsouza/zoxide
 brew "zoxide"
-
-brew "bitwarden-cli"
-
+# bat https://github.com/sharkdp/bat
 brew "bat"
+# ripgrep https://github.com/BurntSushi/ripgrep
+brew "ripgrep"`
