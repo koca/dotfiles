@@ -26,4 +26,4 @@ brew "zoxide"
 # bat https://github.com/sharkdp/bat
 brew "bat"
 # ripgrep https://github.com/BurntSushi/ripgrep
-brew "ripgrep"`
+brew "ripgrep"
