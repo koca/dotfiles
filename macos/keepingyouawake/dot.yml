@@ -1,0 +1,4 @@
+# https://github.com/newmarcel/KeepingYouAwake
+darwin:
+  installs:
+    cmd: brew install --cask keepingyouawake
