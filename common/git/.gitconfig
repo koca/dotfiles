@@ -5,8 +5,8 @@
 	required = true
 
 [user]
-  name = Mesut Koca
-  email = imesutkoca@gmail.com
+	name = Mesut Koca
+	email = imesutkoca@gmail.com
 
 [core]
 	excludesfile = ~/.gitignore
