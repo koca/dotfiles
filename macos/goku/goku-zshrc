@@ -1,0 +1,1 @@
+export GOKU_EDN_CONFIG_FILE="$HOME/.config/goku/karabiner.edn"

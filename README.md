@@ -3,3 +3,5 @@
 new dotfiles WIP
 see the old one on master branch
 test
+
+uses rotz
