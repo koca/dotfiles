@@ -73,3 +73,22 @@ keymapper -v
 
 this should run in background
 
+
+## Launchd deamons/agents call
+
+To add keymapperd and keymapper to the launchd daemons/agents call:
+
+```bash
+sudo ./script.sh add
+```
+
+To remove them call:
+
+```bash
+sudo ./script.sh remove
+```
+
+
+
+# load launchd daemons/agent
+launchctl load /Library/LaunchDaemons/keymapperd.plist

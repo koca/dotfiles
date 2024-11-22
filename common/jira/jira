@@ -1,6 +1,6 @@
 
 # list of FE tasks
-alias jt=jira sprint list --current -lfe -lblueateam
+alias jt="jira sprint list --current -lfe -lblueateam"
 
 
 

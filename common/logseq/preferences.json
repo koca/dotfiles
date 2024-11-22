@@ -19,5 +19,9 @@
       "selected": false
     }
   },
-  "externals": []
+  "externals": [],
+  "pinnedToolbarItems": [
+    "logseq-journals-calendar:open-calendar",
+    "logseq-paste-more:paste-plugin-button"
+  ]
 }

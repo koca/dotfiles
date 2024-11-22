@@ -1,1 +1,4 @@
-{:logseq-mia-theme {:version "v1.6.0", :repo "playerofgames/logseq-mia-theme", :effect false, :theme true}}
+{:logseq-mia-theme {:version "v1.7.0", :repo "playerofgames/logseq-mia-theme", :effect false, :theme true}
+ :logseq-paste-more {:version "v1.5.9", :repo "usoonees/logseq-plugin-paste-more", :effect true, :theme false}
+ :logseq-plugin-block-transformer {:version "v1.1.5", :repo "JuniverseCoder/logseq-plugin-block-transformer", :effect false, :theme false}
+ :logseq-plugin-blank-line {:version "v1.9.0", :repo "YU000jp/logseq-plugin-blank-line", :effect false, :theme false}}
