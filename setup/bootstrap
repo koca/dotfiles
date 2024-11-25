@@ -19,7 +19,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 zsh
 
-brew update
+brew update`
 brew upgrade
 # chmod needed for brew completion
 chmod -R go-w "$(brew --prefix)/share"
@@ -29,3 +29,17 @@ chmod -R go-w "$(brew --prefix)/share"
 #  Install Rotz github.com/volllly/rotz
 # ------------------------------------------------------------------------------
 brew install volllly/tap/rotz
+
+# ------------------------------------------------------------------------------
+#  Clone the repository to ~/kod/personal/dotfiles
+# ------------------------------------------------------------------------------
+
+DOTFILES_PATH=~/kod/personal/dotfiles
+
+git clone https://github.com/koca/dotfiles.git $DOTFILES_PATH
+cp $DOTFILES_PATH/rotz-config.yaml /Users/mesut/Library/Application\ Support/com.rotz/config.yaml
+
+echo "Dotfiles cloned to $DOTFILES_PATH"
+echo "Go to the directory:"
+echo "cd ~/kod/personal/dotfiles"
+echo "and run rotz install"
