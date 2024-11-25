@@ -26,6 +26,13 @@ chmod -R go-w "$(brew --prefix)/share"
 
 
 # ------------------------------------------------------------------------------
+#  Install Rosetta 2
+# ------------------------------------------------------------------------------
+echo "Installing Rosetta 2 for Apple Silicon support"
+softwareupdate --install-rosetta
+
+
+# ------------------------------------------------------------------------------
 #  Install Rotz github.com/volllly/rotz
 # ------------------------------------------------------------------------------
 brew install volllly/tap/rotz
