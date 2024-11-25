@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# ------------------------------------------------------------------------------
+#  Set Chrome as the default browser
+# ------------------------------------------------------------------------------
+osascript ~/kod/personal/dotfiles/common/chrome/set-default-browser.scpt chrome

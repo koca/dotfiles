@@ -14,7 +14,21 @@ curl -fsSL https://raw.githubusercontent.com/koca/dotfiles/refs/heads/main/setup
 
 ### MacOS
 
+#### Allow Terminal Permissions
+
+Go to settings, Privacy & Security, Accessibility, and add Terminal to the list
+
+#### Start the installation
+
 ```sh
 rotz link macos/brew
 rotz install
+```
+
+#### After installation
+
+to set defaults and configure apps run:
+
+```sh
+./setup/mac/after
 ```
