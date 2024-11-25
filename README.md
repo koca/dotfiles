@@ -27,7 +27,11 @@ rotz install
 
 #### After installation
 
-to set defaults and configure apps run:
+```sh
+rotz link
+```
+
+> Optional: to set defaults and configure apps run:
 
 ```sh
 ./setup/mac/after
