@@ -1,7 +1,6 @@
 darwin:
   installs: |
     brew install yqrashawn/goku/goku
-    brew services start goku
 
   links:
     karabiner.edn: ~/.config/goku/karabiner.edn
