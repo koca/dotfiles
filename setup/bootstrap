@@ -19,7 +19,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 zsh
 
-brew update`
+brew update
 brew upgrade
 # chmod needed for brew completion
 chmod -R go-w "$(brew --prefix)/share"
