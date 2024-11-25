@@ -39,7 +39,18 @@ DOTFILES_PATH=~/kod/personal/dotfiles
 git clone https://github.com/koca/dotfiles.git $DOTFILES_PATH
 cp $DOTFILES_PATH/rotz-config.yaml /Users/mesut/Library/Application\ Support/com.rotz/config.yaml
 
-echo "Dotfiles cloned to $DOTFILES_PATH"
-echo "Go to the directory:"
-echo "cd ~/kod/personal/dotfiles"
-echo "and run rotz install"
+echo "---------------------------------------------"
+echo " Dotfiles successfully cloned to $DOTFILES_PATH"
+echo "---------------------------------------------"
+echo ""
+echo "Next steps:"
+echo "1. Navigate to the dotfiles directory:"
+echo "   cd ~/kod/personal/dotfiles"
+echo ""
+echo "2. Execute the installation command suitable for your operating system:"
+echo "   - MacOS: rotz link macos/brew && rotz install"
+echo "   - Linux: rotz install"
+echo "   - Windows: rotz install"
+echo ""
+echo "For more information, refer to the README.md file."
+echo "---------------------------------------------"

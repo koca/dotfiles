@@ -11,3 +11,10 @@ uses rotz
 ```sh
 curl -fsSL https://raw.githubusercontent.com/koca/dotfiles/refs/heads/main/setup/bootstrap | sh
 ```
+
+### MacOS
+
+```sh
+rotz link macos/brew
+rotz install
+```
