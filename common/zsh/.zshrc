@@ -20,8 +20,14 @@ eval "$(starship init zsh)"
 
 # Aliases
 ## load aliases from both public and private directories
+# nullglob needed for the error "no matches found:"
+setopt nullglob  # Make globs that match nothing expand to empty string
 for dir in $HOME/.config/zsh/aliases $HOME/.config/zsh/private; do
-  for file in $dir/*; do
-    [ -f "$file" ] && source "$file"
-  done
+  if [[ -d "$dir" ]]; then  # Check if directory exists
+    for file in $dir/*; do
+      [ -f "$file" ] && source "$file"
+    done
+  fi
 done
+unsetopt nullglob  # Reset the option to its default
+
